@@ -9,6 +9,10 @@
 #define SRC_ESTRUCTURASCLIENTE_SERVIDOR_H_
 
 
+#include<stdlib.h>
+#include<stdio.h>
+//#include<stddef.h>
+
 typedef enum
 {
 	MENSAJE,
@@ -27,6 +31,16 @@ typedef struct
 	op_code codigo_operacion;
 	t_buffer* buffer;
 } t_paquete;
+
+
+typedef struct
+{
+	int pid;
+	pthread_t hilo;
+	pthread_mutex_t mutex;
+
+
+}Tripulante;
 
 
 #endif /* SRC_ESTRUCTURASCLIENTE_SERVIDOR_H_ */

@@ -15,6 +15,7 @@
 #include<sys/socket.h>
 #include<netdb.h>
 #include<string.h>
+#include<pthread.h>
 
 #include "estructurasCliente-Servidor.h"
 /*

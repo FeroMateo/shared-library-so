@@ -19,20 +19,70 @@ void conectar_envio(int codigoDeConexion,char* ip,int PUERTO_PARA_ENVIAR,t_log* 
 			}
 }
 
-int escuchar_puerto(int conexion_server,int puerto)
+int escuchar_puerto(int conexion_server,int puerto, t_log* logger)
 {
 	int conexion_escucha;
 			if(escuchaEn(conexion_server,puerto))
 			{
 				conexion_escucha = aceptarConexion(conexion_server);
+				if(conexion_escucha == -1)
+						{
+							log_info(logger,"ERROR: LA CONEXION ES -1");
+						}
 				return conexion_escucha;
 
 			}else
 			{
-				printf("\n  ERROR: NO ESCUCHA ");
+				log_info(logger,"ERROR: NO ESCUCHA");
 				return -1;
 			}
 }
+
+void asignar_escuchas(int conexion_server,int puerto, t_log* logger)
+{
+	while(1)
+	{
+		if(escuchaEn(conexion_server,puerto))
+		{
+			log_info(logger,"NUEVO CLIENTE");
+			void* aceptar()
+			{
+				int socket_interno = aceptarConexion(conexion_server);
+				log_info(logger,"Se acepto");
+				leer_mensajes(socket_interno, logger);
+			}
+			Tripulante* nuevo_tripulante = crearTripulante(aceptar);
+		}
+	}
+}
+
+void asignar_hilo(void* funcion)
+{
+	Tripulante* nuevo_tripulante = crearTripulante(funcion);
+}
+
+void leer_mensajes(int socket_interno,t_log* log)
+{
+while(1)
+	{
+	int cod_op = recibir_operacion(socket_interno);
+					switch(cod_op)
+					{
+
+					case MENSAJE:
+						//recibir_mensaje(cliente_fd);
+						recibir_mensaje_encriptado(socket_interno,log);
+						break;
+					case -1:
+						log_error(log, "El cliente se desconecto. Terminando servidor");
+						break;
+					default:
+						log_warning(log, "Operacion desconocida. No quieras meter la pata");
+						break;
+					}
+	}
+}
+
 
 
 void recibir_mensaje_encriptado(int cliente_fd,t_log* logg)

@@ -6,18 +6,21 @@
 C_SRCS += \
 ../src/conections.c \
 ../src/conexiones.c \
+../src/estructurasCliente-Servidor.c \
 ../src/utils_cliente.c \
 ../src/utils_servidor.c 
 
 OBJS += \
 ./src/conections.o \
 ./src/conexiones.o \
+./src/estructurasCliente-Servidor.o \
 ./src/utils_cliente.o \
 ./src/utils_servidor.o 
 
 C_DEPS += \
 ./src/conections.d \
 ./src/conexiones.d \
+./src/estructurasCliente-Servidor.d \
 ./src/utils_cliente.d \
 ./src/utils_servidor.d 
 
