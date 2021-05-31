@@ -20,21 +20,23 @@
 #include "estructurasCliente-Servidor.h"
 #include "conexiones.h"
 
+void conectar_envio(int codigoDeConexion,char* ip,int PUERTO_PARA_ENVIAR);
 
-pthread_t array_hilos[4];
-
-
-void holaMundo();
-
-void conectar_envio(int codigoDeConexion,char* ip,int PUERTO_PARA_ENVIAR,t_log* logg);
 int escuchar_puerto(int conexion_server,int puerto,t_log* logger);
+
 void recibir_mensaje_encriptado(int cliente_fd,t_log* logg);
-void asignar_escuchas(int conexion_server,int puerto, t_log* logger);
-void leer_mensajes(int socket_interno,t_log* log);
-void* aceptar();
+
+void asignar_escuchas(int conexion_server,int puerto);
+
+void aceptar_tripulante(int conexion);
+
+void* atender_tripulante(Tripulante* trip);
+
+void* leer_mensajes(int socket_interno);
+
 void chat(int);
+
 void terminar_programa(int,t_config*,t_log*);
-void asignar_hilo(void* funcion);
 
 
 

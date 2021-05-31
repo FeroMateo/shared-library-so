@@ -7,15 +7,19 @@
 
 #include "estructurasCliente-Servidor.h"
 
-Tripulante* crearTripulante(void* funcion)
+Tripulante* crearTripulante()
 {
 	Tripulante* tripulante = malloc(sizeof(Tripulante));
-
-	pthread_create(&(tripulante->hilo),NULL,funcion,NULL);
-	pthread_detach(tripulante->hilo);
-
-	tripulante->pid = pthread_self(tripulante->hilo);
-
+	tripulante->log = log_create("trip.log", "TRIPULANTE", 1, LOG_LEVEL_DEBUG);
+	tripulante->hilo = 0;
+	tripulante->conexion = -1;
 	return tripulante;
 
+}
+
+void borrarTripulante(Tripulante* trip)
+{
+	log_destroy(trip->log);
+	close(trip->conexion);
+	free(trip);
 }

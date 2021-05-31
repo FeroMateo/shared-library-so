@@ -1,21 +1,16 @@
 
-#include <conections.h>
+#include "conections.h"
 
 
-void holaMundo()
-{
-	printf("Hola Mundo");
-}
-
-
-void conectar_envio(int codigoDeConexion,char* ip,int PUERTO_PARA_ENVIAR,t_log* logg)
+void conectar_envio(int codigoDeConexion,char* ip,int PUERTO_PARA_ENVIAR)
 {
 	if(conectarA(codigoDeConexion,ip,PUERTO_PARA_ENVIAR))
 			{
-				log_info(logg,"SE CONECTO UN CLIENTE");
+				//log_info(logg,"SE CONECTO UN CLIENTE");
+				chat(codigoDeConexion);
 			}else
 			{
-				log_info(logg,"ERROR AL CONECTAR");
+				//log_info(logg,"ERROR AL CONECTAR");
 			}
 }
 
@@ -38,31 +33,54 @@ int escuchar_puerto(int conexion_server,int puerto, t_log* logger)
 			}
 }
 
-void asignar_escuchas(int conexion_server,int puerto, t_log* logger)
+void asignar_escuchas(int conexion_server,int puerto)
 {
-	while(1)
-	{
 		if(escuchaEn(conexion_server,puerto))
 		{
-			log_info(logger,"NUEVO CLIENTE");
-			void* aceptar()
+			while(1)
 			{
-				int socket_interno = aceptarConexion(conexion_server);
-				log_info(logger,"Se acepto");
-				leer_mensajes(socket_interno, logger);
+				aceptar_tripulante(conexion_server);
 			}
-			Tripulante* nuevo_tripulante = crearTripulante(aceptar);
 		}
+}
+void* atender_tripulante(Tripulante* trip)
+{
+	while(1)
+		{
+		int cod_op = recibir_operacion(trip->conexion);
+						switch(cod_op)
+						{
+
+						case MENSAJE:
+							//recibir_mensaje(cliente_fd);
+							recibir_mensaje_encriptado(trip->conexion,trip->log);
+							break;
+						case -1:
+							log_error(trip->log, "El cliente se desconecto. Terminando servidor");
+							break;
+						default:
+							//log_warning(trip->log, "Operacion desconocida. No quieras meter la pata");
+							break;
+						}
+		}
+}
+
+void aceptar_tripulante(int conexion)
+{
+	Tripulante* nuevo_tripulante = crearTripulante();
+	nuevo_tripulante->conexion = aceptarConexion(conexion);
+	if(nuevo_tripulante->conexion != -1)
+	{
+		log_info(nuevo_tripulante->log,"NUEVO TRIPULANTE");
+		pthread_create(&(nuevo_tripulante->hilo),NULL,atender_tripulante,nuevo_tripulante);
+		pthread_detach(nuevo_tripulante->hilo);
 	}
 }
 
-void asignar_hilo(void* funcion)
+void* leer_mensajes(int socket_interno)
 {
-	Tripulante* nuevo_tripulante = crearTripulante(funcion);
-}
+t_log* log = log_create("logger.log", "OTRO", 1, LOG_LEVEL_DEBUG);
 
-void leer_mensajes(int socket_interno,t_log* log)
-{
 while(1)
 	{
 	int cod_op = recibir_operacion(socket_interno);

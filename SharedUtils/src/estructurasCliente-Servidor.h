@@ -11,6 +11,7 @@
 
 #include<stdlib.h>
 #include<stdio.h>
+#include<commons/log.h>
 //#include<stddef.h>
 
 typedef enum
@@ -35,12 +36,16 @@ typedef struct
 
 typedef struct
 {
-	int pid;
+	int conexion;
+	t_log* log;
 	pthread_t hilo;
 	pthread_mutex_t mutex;
 
 
 }Tripulante;
 
+
+Tripulante* crearTripulante();
+void borrarTripulante(Tripulante* trip);
 
 #endif /* SRC_ESTRUCTURASCLIENTE_SERVIDOR_H_ */

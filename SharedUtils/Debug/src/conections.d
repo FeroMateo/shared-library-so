@@ -1,16 +1,13 @@
-src/conections.o: ../src/conections.c \
- /home/utnso/shared-library-so/SharedUtils/src/conections.h \
- /home/utnso/shared-library-so/SharedUtils/src/utils_servidor.h \
- /home/utnso/shared-library-so/SharedUtils/src/estructurasCliente-Servidor.h \
- /home/utnso/shared-library-so/SharedUtils/src/utils_cliente.h \
- /home/utnso/shared-library-so/SharedUtils/src/conexiones.h
+src/conections.o: ../src/conections.c ../src/conections.h \
+ ../src/utils_servidor.h ../src/estructurasCliente-Servidor.h \
+ ../src/utils_cliente.h ../src/conexiones.h
 
-/home/utnso/shared-library-so/SharedUtils/src/conections.h:
+../src/conections.h:
 
-/home/utnso/shared-library-so/SharedUtils/src/utils_servidor.h:
+../src/utils_servidor.h:
 
-/home/utnso/shared-library-so/SharedUtils/src/estructurasCliente-Servidor.h:
+../src/estructurasCliente-Servidor.h:
 
-/home/utnso/shared-library-so/SharedUtils/src/utils_cliente.h:
+../src/utils_cliente.h:
 
-/home/utnso/shared-library-so/SharedUtils/src/conexiones.h:
+../src/conexiones.h:
