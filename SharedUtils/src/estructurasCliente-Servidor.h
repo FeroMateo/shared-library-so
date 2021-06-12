@@ -12,10 +12,10 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include<commons/log.h>
-//#include<stddef.h>
 
 typedef enum
 {
+	PCB,
 	MENSAJE,
 	CONEXION,
 	PAQUETE
@@ -33,14 +33,20 @@ typedef struct
 	t_buffer* buffer;
 } t_paquete;
 
+typedef struct
+{
+	int primero;
+	int segundo;
+	char* tercero;
+} t_pcb;
 
 typedef struct
 {
+	//BASICO;
 	int conexion;
 	t_log* log;
 	pthread_t hilo;
 	pthread_mutex_t mutex;
-
 
 }Tripulante;
 

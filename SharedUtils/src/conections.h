@@ -38,6 +38,8 @@ void chat(int);
 
 void terminar_programa(int,t_config*,t_log*);
 
+void recibir_pcb(int cliente,t_log* logg);
+
 
 
 

@@ -18,14 +18,12 @@ typedef struct{
 	int idUnico;
 }t_handshake;
 */
+
+
 int crearSocket();
 bool escuchaEn(int socketListener, int puerto);
 bool conectarA(int socketServidor, String ip, int puerto);
 int aceptarConexion(int socketListener);
-/*
-t_handshake* iniciarHandshake(int socketDestino, t_handshake* idProcesoOrigen);
-t_handshake* responderHandshake(int socketDestino, t_handshake* idProcesoOrigen);
-*/
 void* recibirDatos(int socket, int sizeStream);
 
 

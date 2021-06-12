@@ -33,15 +33,14 @@ int escuchar_puerto(int conexion_server,int puerto, t_log* logger)
 			}
 }
 
+
 void asignar_escuchas(int conexion_server,int puerto)
 {
-		if(escuchaEn(conexion_server,puerto))
-		{
-			while(1)
-			{
-				aceptar_tripulante(conexion_server);
-			}
-		}
+		escuchaEn(conexion_server,puerto);
+		while(1)
+					{
+						aceptar_tripulante(conexion_server);
+					}
 }
 void* atender_tripulante(Tripulante* trip)
 {
@@ -50,9 +49,10 @@ void* atender_tripulante(Tripulante* trip)
 		int cod_op = recibir_operacion(trip->conexion);
 						switch(cod_op)
 						{
-
+						case PCB:
+							recibir_pcb(trip->conexion,trip->log);
+							break;
 						case MENSAJE:
-							//recibir_mensaje(cliente_fd);
 							recibir_mensaje_encriptado(trip->conexion,trip->log);
 							break;
 						case -1:
@@ -86,7 +86,6 @@ while(1)
 	int cod_op = recibir_operacion(socket_interno);
 					switch(cod_op)
 					{
-
 					case MENSAJE:
 						//recibir_mensaje(cliente_fd);
 						recibir_mensaje_encriptado(socket_interno,log);
@@ -101,6 +100,19 @@ while(1)
 	}
 }
 
+
+void recibir_pcb(int cliente,t_log* logg)
+{
+	char* mensaje;
+	char** mensaje_decriptado;
+	mensaje = recibir_y_guardar_mensaje(cliente);
+	mensaje_decriptado = string_split(mensaje,",");
+	t_pcb* pcb = malloc(sizeof(t_pcb));
+	pcb->primero = atoi(mensaje_decriptado[0]);
+	pcb->segundo = atoi(mensaje_decriptado[1]);
+	pcb->tercero = mensaje_decriptado[2];
+
+}
 
 
 void recibir_mensaje_encriptado(int cliente_fd,t_log* logg)
