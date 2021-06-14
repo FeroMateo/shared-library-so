@@ -50,7 +50,7 @@ void* atender_tripulante(Tripulante* trip)
 						switch(cod_op)
 						{
 						case PCB:
-							recibir_pcb(trip->conexion,trip->log);
+							//recibir_pcb(trip->conexion,trip->log);
 							break;
 						case MENSAJE:
 							recibir_mensaje_encriptado(trip->conexion,trip->log);

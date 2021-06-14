@@ -56,6 +56,6 @@ void enviar_codigo(char* mensaje, int socket_cliente);
 void* recibir_buffer(int* size, int socket_cliente);
 char* recibir_y_guardar_mensaje(int socket_cliente);
 
-
+void enviar_pcb(t_pcb* pcb, int socket_cliente);
 
 #endif /* UTILS_CLIENTE_H_ */

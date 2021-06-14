@@ -71,7 +71,7 @@ void enviar_pcb(t_pcb* pcb, int socket_cliente)
 {
 	t_paquete* paquete = malloc(sizeof(t_paquete));
 	paquete->codigo_operacion = PCB;
-	char* mensaje = itoa(pcb->primero) + ',' + itoa(pcb->segundo) + ',' + pcb->tercero;
+	char* mensaje = "EL ITOA NO ANDA";//itoa(pcb->primero) + ',' + itoa(pcb->segundo) + ',' + pcb->tercero;
 	paquete->buffer = malloc(sizeof(t_buffer));
 	paquete->buffer->size = strlen(mensaje) + 1;
 	paquete->buffer->stream = malloc(paquete->buffer->size);
