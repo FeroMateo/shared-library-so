@@ -54,5 +54,6 @@ t_list* recibir_paquete(int);
 void recibir_mensaje(int);
 char* recibir_y_guardar_mensaje(int socket_cliente);
 int recibir_operacion(int);
+char* recibir_id(int socket_cliente);
 
 #endif /* CONEXIONES_H_ */

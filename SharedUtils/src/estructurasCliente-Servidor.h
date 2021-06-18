@@ -15,7 +15,11 @@
 
 typedef enum
 {
-
+	EXPULSAR_TRIPULANTE,
+	INICIAR_PATOTAS,
+	SOLICITAR_PROXIMA_TAREA,
+	RECIBIR_TRIPULANTE,
+	CONFIRMAR_PATOTA,
 	MENSAJE,
 	CONEXION,
 	PAQUETE
@@ -37,6 +41,7 @@ typedef struct
 typedef struct
 {
 	//BASICO;
+	int id_tripulante;
 	int conexion;
 	t_log* log;
 	pthread_t hilo;

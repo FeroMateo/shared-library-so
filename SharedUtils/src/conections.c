@@ -7,7 +7,6 @@ void conectar_envio(int codigoDeConexion,char* ip,int PUERTO_PARA_ENVIAR)
 	if(conectarA(codigoDeConexion,ip,PUERTO_PARA_ENVIAR))
 			{
 				//log_info(logg,"SE CONECTO UN CLIENTE");
-				chat(codigoDeConexion);
 			}else
 			{
 				//log_info(logg,"ERROR AL CONECTAR");
@@ -34,37 +33,15 @@ int escuchar_puerto(int conexion_server,int puerto, t_log* logger)
 }
 
 
-void asignar_escuchas(int conexion_server,int puerto)
+void asignar_escuchas(int conexion_server,int puerto, void* atender(Tripulante* trip))
 {
 		escuchaEn(conexion_server,puerto);
 		while(1)
 					{
-						aceptar_tripulante(conexion_server);
+						aceptar_tripulante(conexion_server,atender);
 					}
 }
 
-
-
-void* atender_tripulante(Tripulante* trip)
-{
-	while(1)
-		{
-		int cod_op = recibir_operacion(trip->conexion);
-						switch(cod_op)
-						{
-
-					    case MENSAJE:
-							recibir_mensaje_encriptado(trip->conexion,trip->log);
-							break;
-						case -1:
-							log_error(trip->log, "El cliente se desconecto. Terminando servidor");
-							break;
-						default:
-							//log_warning(trip->log, "Operacion desconocida. No quieras meter la pata");
-							break;
-						}
-		}
-}
 
 
 void recibir_mensaje_encriptado(int cliente_fd,t_log* logg)
@@ -97,47 +74,17 @@ void recibir_mensaje_encriptado(int cliente_fd,t_log* logg)
 
 
 
-void aceptar_tripulante(int conexion)
+void aceptar_tripulante(int conexion, void* atender(Tripulante* trip))
 {
 	Tripulante* nuevo_tripulante = crearTripulante();
 	nuevo_tripulante->conexion = aceptarConexion(conexion);
 	if(nuevo_tripulante->conexion != -1)
 	{
 		log_info(nuevo_tripulante->log,"NUEVO TRIPULANTE");
-		pthread_create(&(nuevo_tripulante->hilo),NULL,atender_tripulante,nuevo_tripulante);
+		pthread_create(&(nuevo_tripulante->hilo),NULL,atender,nuevo_tripulante);
 		pthread_detach(nuevo_tripulante->hilo);
 	}
 }
-
-
-
-
-
-
-void* leer_mensajes(int socket_interno)
-{
-t_log* log = log_create("logger.log", "OTRO", 1, LOG_LEVEL_DEBUG);
-
-while(1)
-	{
-	int cod_op = recibir_operacion(socket_interno);
-					switch(cod_op)
-					{
-					case MENSAJE:
-						//recibir_mensaje(cliente_fd);
-						recibir_mensaje_encriptado(socket_interno,log);
-						break;
-					case -1:
-						log_error(log, "El cliente se desconecto. Terminando servidor");
-						break;
-					default:
-						log_warning(log, "Operacion desconocida. No quieras meter la pata");
-						break;
-					}
-	}
-}
-
-
 
 
 void chat(int conexion)

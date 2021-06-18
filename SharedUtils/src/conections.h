@@ -26,11 +26,9 @@ int escuchar_puerto(int conexion_server,int puerto,t_log* logger);
 
 void recibir_mensaje_encriptado(int cliente_fd,t_log* logg);
 
-void asignar_escuchas(int conexion_server,int puerto);
+void asignar_escuchas(int conexion_server,int puerto, void* atender(Tripulante* trip));
 
-void aceptar_tripulante(int conexion);
-
-void* atender_tripulante(Tripulante* trip);
+void aceptar_tripulante(int conexion, void* atender(Tripulante* trip));
 
 void* leer_mensajes(int socket_interno);
 
