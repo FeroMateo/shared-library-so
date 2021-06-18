@@ -42,6 +42,9 @@ void asignar_escuchas(int conexion_server,int puerto)
 						aceptar_tripulante(conexion_server);
 					}
 }
+
+
+
 void* atender_tripulante(Tripulante* trip)
 {
 	while(1)
@@ -49,10 +52,8 @@ void* atender_tripulante(Tripulante* trip)
 		int cod_op = recibir_operacion(trip->conexion);
 						switch(cod_op)
 						{
-						case PCB:
-							//recibir_pcb(trip->conexion,trip->log);
-							break;
-						case MENSAJE:
+
+					    case MENSAJE:
 							recibir_mensaje_encriptado(trip->conexion,trip->log);
 							break;
 						case -1:
@@ -63,55 +64,6 @@ void* atender_tripulante(Tripulante* trip)
 							break;
 						}
 		}
-}
-
-void aceptar_tripulante(int conexion)
-{
-	Tripulante* nuevo_tripulante = crearTripulante();
-	nuevo_tripulante->conexion = aceptarConexion(conexion);
-	if(nuevo_tripulante->conexion != -1)
-	{
-		log_info(nuevo_tripulante->log,"NUEVO TRIPULANTE");
-		pthread_create(&(nuevo_tripulante->hilo),NULL,atender_tripulante,nuevo_tripulante);
-		pthread_detach(nuevo_tripulante->hilo);
-	}
-}
-
-void* leer_mensajes(int socket_interno)
-{
-t_log* log = log_create("logger.log", "OTRO", 1, LOG_LEVEL_DEBUG);
-
-while(1)
-	{
-	int cod_op = recibir_operacion(socket_interno);
-					switch(cod_op)
-					{
-					case MENSAJE:
-						//recibir_mensaje(cliente_fd);
-						recibir_mensaje_encriptado(socket_interno,log);
-						break;
-					case -1:
-						log_error(log, "El cliente se desconecto. Terminando servidor");
-						break;
-					default:
-						log_warning(log, "Operacion desconocida. No quieras meter la pata");
-						break;
-					}
-	}
-}
-
-
-void recibir_pcb(int cliente,t_log* logg)
-{
-	char* mensaje;
-	char** mensaje_decriptado;
-	mensaje = recibir_y_guardar_mensaje(cliente);
-	mensaje_decriptado = string_split(mensaje,",");
-	t_pcb* pcb = malloc(sizeof(t_pcb));
-	pcb->primero = atoi(mensaje_decriptado[0]);
-	pcb->segundo = atoi(mensaje_decriptado[1]);
-	pcb->tercero = mensaje_decriptado[2];
-
 }
 
 
@@ -140,6 +92,51 @@ void recibir_mensaje_encriptado(int cliente_fd,t_log* logg)
 
 
 }
+
+
+
+
+
+void aceptar_tripulante(int conexion)
+{
+	Tripulante* nuevo_tripulante = crearTripulante();
+	nuevo_tripulante->conexion = aceptarConexion(conexion);
+	if(nuevo_tripulante->conexion != -1)
+	{
+		log_info(nuevo_tripulante->log,"NUEVO TRIPULANTE");
+		pthread_create(&(nuevo_tripulante->hilo),NULL,atender_tripulante,nuevo_tripulante);
+		pthread_detach(nuevo_tripulante->hilo);
+	}
+}
+
+
+
+
+
+
+void* leer_mensajes(int socket_interno)
+{
+t_log* log = log_create("logger.log", "OTRO", 1, LOG_LEVEL_DEBUG);
+
+while(1)
+	{
+	int cod_op = recibir_operacion(socket_interno);
+					switch(cod_op)
+					{
+					case MENSAJE:
+						//recibir_mensaje(cliente_fd);
+						recibir_mensaje_encriptado(socket_interno,log);
+						break;
+					case -1:
+						log_error(log, "El cliente se desconecto. Terminando servidor");
+						break;
+					default:
+						log_warning(log, "Operacion desconocida. No quieras meter la pata");
+						break;
+					}
+	}
+}
+
 
 
 

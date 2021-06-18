@@ -15,7 +15,7 @@
 
 typedef enum
 {
-	PCB,
+
 	MENSAJE,
 	CONEXION,
 	PAQUETE
@@ -33,12 +33,6 @@ typedef struct
 	t_buffer* buffer;
 } t_paquete;
 
-typedef struct
-{
-	int primero;
-	int segundo;
-	char* tercero;
-} t_pcb;
 
 typedef struct
 {

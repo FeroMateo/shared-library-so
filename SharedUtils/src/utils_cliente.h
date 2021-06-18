@@ -37,8 +37,8 @@ typedef struct
 	op_code codigo_operacion;
 	t_buffer* buffer;
 } t_paquete;
-*/
 
+*/
 int crear_conexion(char* ip, char* puerto);
 void enviar_mensaje(char* mensaje, int socket_cliente);
 t_paquete* crear_paquete(void);
@@ -56,6 +56,6 @@ void enviar_codigo(char* mensaje, int socket_cliente);
 void* recibir_buffer(int* size, int socket_cliente);
 char* recibir_y_guardar_mensaje(int socket_cliente);
 
-void enviar_pcb(t_pcb* pcb, int socket_cliente);
+
 
 #endif /* UTILS_CLIENTE_H_ */
