@@ -51,6 +51,8 @@ void enviar_codigo(char* mensaje, int socket_cliente);
 
 void enviar_mensaje_por_codigo(char* mensaje,op_code codigo, int socket_cliente);
 void solicitar_expulsar_tripulante(char* id_tripulante, int socket_cliente);
+void enviar_nuevas_posiciones_tripulante(char* id_tripulante, int socket_cliente);
+void enviar_nueva_tarea_tripulante(char* id_tripulante, int socket_cliente);
 ///////////////////////
 
 void* recibir_buffer(int* size, int socket_cliente);

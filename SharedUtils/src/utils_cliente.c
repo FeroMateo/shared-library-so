@@ -45,6 +45,7 @@ int crear_conexion(char *ip, char* puerto)
 	return socket_cliente;
 }
 
+
 void enviar_mensaje(char* mensaje, int socket_cliente)
 {
 	t_paquete* paquete = malloc(sizeof(t_paquete));
@@ -66,6 +67,8 @@ void enviar_mensaje(char* mensaje, int socket_cliente)
 }
 
 
+// ESTE ES LA FUNCIONALIDAD UTILIZADA PARA MANDAR MENSAJES SEGUN OP_CODE
+
 void enviar_mensaje_por_codigo(char* mensaje,op_code codigo, int socket_cliente)
 {
 	t_paquete* paquete = malloc(sizeof(t_paquete));
@@ -85,7 +88,7 @@ void enviar_mensaje_por_codigo(char* mensaje,op_code codigo, int socket_cliente)
 	eliminar_paquete(paquete);
 }
 
-
+// TODAS LAS FUNCIONES DE ENVIAR ESTÁN HECHAS YA QUE NO TOMABAMOS EN CUENTA QUE E
 
 
 // PCB = PRIMERO,SEGUNDO,TERCERO;
@@ -163,6 +166,18 @@ void solicitar_expulsar_tripulante(char* id_tripulante, int socket_cliente)
 {
 	enviar_mensaje_por_codigo(id_tripulante,EXPULSAR_TRIPULANTE,socket_cliente);
 }
+
+void enviar_nuevas_posiciones_tripulante(char* id_tripulante, int socket_cliente)
+{
+	enviar_mensaje_por_codigo(id_tripulante,POSICION_TRIPULANTE_ACTUALIZADA,socket_cliente);
+}
+
+void enviar_nueva_tarea_tripulante(char* id_tripulante, int socket_cliente)
+{
+	enviar_mensaje_por_codigo(id_tripulante,ENVIAR_PROXIMA_TAREA,socket_cliente);
+}
+
+
 /*
 
 void enviar_solicitud_tarea(char* mensaje, int socket_cliente)

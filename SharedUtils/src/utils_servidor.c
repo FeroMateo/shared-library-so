@@ -96,6 +96,9 @@ char* recibir_y_guardar_mensaje(int socket_cliente)
 	return buffer;
 	free(buffer);
 }
+
+
+
 char* recibir_id(int socket_cliente)
 {
 	int size;
