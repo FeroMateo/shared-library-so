@@ -85,83 +85,12 @@ void enviar_mensaje_por_codigo(char* mensaje,op_code codigo, int socket_cliente)
 	send(socket_cliente, a_enviar, bytes, 0);
 
 	free(a_enviar);
+
 	eliminar_paquete(paquete);
 }
 
 // TODAS LAS FUNCIONES DE ENVIAR ESTÁN HECHAS YA QUE NO TOMABAMOS EN CUENTA QUE E
 
-
-// PCB = PRIMERO,SEGUNDO,TERCERO;
-/*
-void enviar_pcb(t_pcb* pcb, int socket_cliente)
-{
-	t_paquete* paquete = malloc(sizeof(t_paquete));
-
-	char* mensaje = "EL ITOA NO ANDA";//itoa(pcb->primero) + ',' + itoa(pcb->segundo) + ',' + pcb->tercero;
-
-	paquete->codigo_operacion = PCB;
-	paquete->buffer = malloc(sizeof(t_buffer));
-	paquete->buffer->size = strlen(mensaje) + 1;
-	paquete->buffer->stream = malloc(paquete->buffer->size);
-	memcpy(paquete->buffer->stream, mensaje, paquete->buffer->size);
-
-
-
-	int bytes = paquete->buffer->size + 2*sizeof(int);
-
-	void* a_enviar = serializar_paquete(paquete, bytes);
-
-	send(socket_cliente, a_enviar, bytes, 0);
-
-	free(a_enviar);
-	eliminar_paquete(paquete);
-}
-
-void enviar_iniciar_patota(char* mensaje, int socket_cliente)
-{
-	t_paquete* paquete = malloc(sizeof(t_paquete));
-
-	paquete->codigo_operacion = INICIAR_PATOTA;
-	paquete->buffer = malloc(sizeof(t_buffer));
-	paquete->buffer->size = strlen(mensaje) + 1;
-	paquete->buffer->stream = malloc(paquete->buffer->size);
-	memcpy(paquete->buffer->stream, mensaje, paquete->buffer->size);
-
-
-
-	int bytes = paquete->buffer->size + 2*sizeof(int);
-
-	void* a_enviar = serializar_paquete(paquete, bytes);
-
-	send(socket_cliente, a_enviar, bytes, 0);
-
-	free(a_enviar);
-	eliminar_paquete(paquete);
-}
-
-void enviar_posicion(char* mensaje, int socket_cliente)
-{
-	t_paquete* paquete = malloc(sizeof(t_paquete));
-
-	paquete->codigo_operacion = ENVIAR_POSICION;
-	paquete->buffer = malloc(sizeof(t_buffer));
-	paquete->buffer->size = strlen(mensaje) + 1;
-	paquete->buffer->stream = malloc(paquete->buffer->size);
-	memcpy(paquete->buffer->stream, mensaje, paquete->buffer->size);
-
-
-
-	int bytes = paquete->buffer->size + 2*sizeof(int);
-
-	void* a_enviar = serializar_paquete(paquete, bytes);
-
-	send(socket_cliente, a_enviar, bytes, 0);
-
-	free(a_enviar);
-	eliminar_paquete(paquete);
-}
-
-*/
 void solicitar_expulsar_tripulante(char* id_tripulante, int socket_cliente)
 {
 	enviar_mensaje_por_codigo(id_tripulante,EXPULSAR_TRIPULANTE,socket_cliente);
@@ -177,31 +106,26 @@ void enviar_nueva_tarea_tripulante(char* id_tripulante, int socket_cliente)
 	enviar_mensaje_por_codigo(id_tripulante,ENVIAR_PROXIMA_TAREA,socket_cliente);
 }
 
-
-/*
-
-void enviar_solicitud_tarea(char* mensaje, int socket_cliente)
+void enviar_iniciar_patota(char* id_tripulante, int socket_cliente)
 {
-	t_paquete* paquete = malloc(sizeof(t_paquete));
-
-	paquete->codigo_operacion = SOLICITUD_TAREA;
-	paquete->buffer = malloc(sizeof(t_buffer));
-	paquete->buffer->size = strlen(mensaje) + 1;
-	paquete->buffer->stream = malloc(paquete->buffer->size);
-	memcpy(paquete->buffer->stream, mensaje, paquete->buffer->size);
-
-
-
-	int bytes = paquete->buffer->size + 2*sizeof(int);
-
-	void* a_enviar = serializar_paquete(paquete, bytes);
-
-	send(socket_cliente, a_enviar, bytes, 0);
-
-	free(a_enviar);
-	eliminar_paquete(paquete);
+	enviar_mensaje_por_codigo(id_tripulante,INICIAR_PATOTAS,socket_cliente);
 }
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void enviar_codigo(char* mensaje, int socket_cliente)
 {
@@ -241,6 +165,7 @@ t_paquete* crear_super_paquete(void)
 	//crear_buffer(paquete);
 	return paquete;
 }
+
 */
 t_paquete* crear_paquete(void)
 {
