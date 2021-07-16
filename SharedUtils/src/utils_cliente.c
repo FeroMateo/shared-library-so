@@ -23,6 +23,9 @@ void* serializar_paquete(t_paquete* paquete, int bytes)
 	return magic;
 }
 
+
+
+
 int crear_conexion(char *ip, char* puerto)
 {
 	struct addrinfo hints;
@@ -111,6 +114,8 @@ void enviar_iniciar_patota(char* id_tripulante, int socket_cliente)
 	enviar_mensaje_por_codigo(id_tripulante,INICIAR_PATOTAS,socket_cliente);
 }
 
+
+
 void enviar_codigo(char* mensaje, int socket_cliente)
 {
 	t_paquete* paquete = malloc(sizeof(t_paquete));
@@ -143,6 +148,14 @@ t_paquete* crear_paquete(void)
 {
 	t_paquete* paquete = malloc(sizeof(t_paquete));
 	paquete->codigo_operacion = PAQUETE;
+	crear_buffer(paquete);
+	return paquete;
+}
+
+t_paquete* crear_patota_paquete(void)
+{
+	t_paquete* paquete = malloc(sizeof(t_paquete));
+	paquete->codigo_operacion = INICIAR_PATOTAS;
 	crear_buffer(paquete);
 	return paquete;
 }
