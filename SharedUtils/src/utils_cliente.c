@@ -93,7 +93,7 @@ void enviar_mensaje_por_codigo(char* mensaje,op_code codigo, int socket_cliente)
 
 void solicitar_expulsar_tripulante(char* id_tripulante, int socket_cliente)
 {
-	enviar_mensaje_por_codigo(id_tripulante,EXPULSAR_TRIPULANTE,socket_cliente);
+	enviar_mensaje_por_codigo(id_tripulante,EXPULSAR_TRIPULANTES,socket_cliente);
 }
 
 void enviar_nuevas_posiciones_tripulante(char* id_tripulante, int socket_cliente)
@@ -110,22 +110,6 @@ void enviar_iniciar_patota(char* id_tripulante, int socket_cliente)
 {
 	enviar_mensaje_por_codigo(id_tripulante,INICIAR_PATOTAS,socket_cliente);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 void enviar_codigo(char* mensaje, int socket_cliente)
 {
@@ -154,19 +138,7 @@ void crear_buffer(t_paquete* paquete)
 	paquete->buffer->size = 0;
 	paquete->buffer->stream = NULL;
 }
-/*
-t_paquete* crear_super_paquete(void)
-{
-	//me falta un malloc!
-	t_paquete* paquete;
 
-	//descomentar despues de arreglar
-	//paquete->codigo_operacion = PAQUETE;
-	//crear_buffer(paquete);
-	return paquete;
-}
-
-*/
 t_paquete* crear_paquete(void)
 {
 	t_paquete* paquete = malloc(sizeof(t_paquete));
