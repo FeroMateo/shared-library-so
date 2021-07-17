@@ -132,6 +132,16 @@ t_list* recibir_paquete(int socket_cliente)
 	return NULL;
 }
 
+void recibir_bitacora(int cliente_fd,t_log* logg)
+{
+	char* mensaje;
+
+	mensaje = recibir_y_guardar_mensaje(cliente_fd);
+
+	log_info(logg,"BITACORA: %s",mensaje);
+
+}
+
 
 
 
