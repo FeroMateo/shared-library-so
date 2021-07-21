@@ -18,12 +18,18 @@ int escuchar_puerto(int conexion_server,int puerto, t_log* logger)
 	int conexion_escucha;
 			if(escuchaEn(conexion_server,puerto))
 			{
-				conexion_escucha = aceptarConexion(conexion_server);
-				if(conexion_escucha == -1)
-						{
-							log_info(logger,"ERROR: LA CONEXION ES -1");
-						}
-				return conexion_escucha;
+				log_info(logger,"TRIPULANTE ESCUCHANDO");
+
+				while(1)
+				{
+					conexion_escucha = aceptarConexion(conexion_server);
+					if(conexion_escucha != -1)
+					{
+							log_info(logger,"<> CONEXION ACEPTADA");
+							return conexion_escucha;
+					}
+
+				}
 
 			}else
 			{
