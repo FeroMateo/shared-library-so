@@ -23,13 +23,14 @@ int main(void){
 	}
 
 
-	crearMapaVacio();
+	//crearMapaVacio();
 
 	prender_server();
 
-
+	/*
 	while (1)
 			{
+
 				sleep(1);
 
 				char* leido = readline(">");
@@ -37,7 +38,7 @@ int main(void){
 				if (string_equals_ignore_case(split[0], "exit"))
 				{
 					free(leido);
-					liberarStringArray(split);
+					//liberarStringArray(split);
 					break;
 				}else if(string_equals_ignore_case(split[0],"showS"))
 				{
@@ -53,7 +54,7 @@ int main(void){
 					void mostrarTripulantes(t_tabla_tripulante* unaTabla)
 					{
 						log_info(logger,"En el segmento es %d esta: \n", unaTabla->seg_tcb->id);
-						mostrarTripulante(unaTabla->idTripulante);
+						//mostrarTripulante(unaTabla->idTripulante);
 					}
 
 					list_iterate(tablaDeSegmentosDeTripulantes, (void*)mostrarTripulantes);
@@ -97,6 +98,7 @@ int main(void){
 				free(leido);
 				liberarStringArray(split);
 			}
+			*/
 
 	liberarMemoria();
 	//liberar_conexion(server_fd);
@@ -129,10 +131,10 @@ void* atender_tripulante(Tripulante* trip)
 			{
 				case ENVIAR_PROXIMA_TAREA:
 
-					actualizarIdTareaARealizar(trip);
+					//actualizarIdTareaARealizar(trip);
 					break;
 				case POSICION_TRIPULANTE_ACTUALIZADA:
-					actualizar_posicion_tripulante(trip);
+					//actualizar_posicion_tripulante(trip);
 					break;
 				case INICIAR_PATOTAS:
 
@@ -154,6 +156,7 @@ void* atender_tripulante(Tripulante* trip)
 			}
 
 		}
+
 
 }
 
@@ -208,7 +211,7 @@ void cargar_configuracion(void)
 
 void signalCompactacion(int sig){
 	log_info(logger, "Recibi la senial de compactar, compactando...");
-	compactacion();
+	//compactacion();
 }
 void signalDump(int sig){
 
@@ -219,7 +222,7 @@ void signalDump(int sig){
 void dump(){
 
 	if(string_equals_ignore_case(ESQUEMA_MEM, "SEGMENTACION")){
-		dumpSegmentacion();
+		//dumpSegmentacion();
 	}else if(string_equals_ignore_case(ESQUEMA_MEM, "PAGINACION")){
 		dumpPaginacion();
 	}

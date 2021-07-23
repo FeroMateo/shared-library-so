@@ -9,8 +9,21 @@
 #define MIRAM_H_
 
 #include "estructurasMemoria.h"
+#include "estructurasCliente-Servidor.h"
+//
+#include <stdio.h>
+#include <stdlib.h>
+#include <commons/log.h>
+#include <commons/string.h>
+#include <commons/config.h>
+#include <commons/bitarray.h>
+#include <readline/readline.h>
+#include <pthread.h>
+#include <stdarg.h>
+#include <math.h>
+#include "mapa.h"
 
-
+//
 
 typedef enum
 {
@@ -37,9 +50,14 @@ char* CRITERIO_SELECCION;   // El tipo de algoritmo de selección de partición 
 t_log* miRam_logger;
 t_config* miRam_config;
 
+void* atender_tripulante(Tripulante* trip);
 void cargar_configuracion(void);
 void manejar_tripus(int socket);
 void manejarConexion(int socket);
+void prender_server();
+void dump();
+void signalCompactacion(int sig);
+void signalDump(int sig);
 
 
 #endif /* MIRAM_H_ */

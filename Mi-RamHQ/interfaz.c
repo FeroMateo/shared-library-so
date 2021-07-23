@@ -93,13 +93,13 @@ void iniciarPatota(int socket_cliente){
     }
 
 	if(pudeGuardar == 1){
-		enviarOK(socket_cliente);
+		//TODO:enviarOK(socket_cliente);
 		log_info(logger,"Envio ok");
 	}
 	else
 	{
 		log_error(logger, "No hay lugar para alojar la patota en memoria, lo sentimos");
-		enviarFail(socket_cliente);
+		//TODO:enviarFail(socket_cliente);
 	}
 
 
@@ -111,9 +111,9 @@ void iniciarPatota(int socket_cliente){
 }
 
 int s_iniciarPatota(int cantTripus, int idPatota, char* tareas, int tamanioTotal){
-
+	//
     //HAYLUGAR -> UN TCB = 21 BYTES, VAN A HABER N TCBS + 1 PCB (OCUPA 8 BYTES) + TAREAS
-
+	/*
     if(puedoGuardar(tamanioTotal)){
 		//AGREGAR LAS TAREAS A LA MEMORIA -> T_SEGMENTO DE TAREAS
 		//t_segmento* segmentoTareas = guardarTareasSeg(tareasSeparadas); //DEVUELVE EL SEGMENTO DONDE SE GUARDO
@@ -143,6 +143,7 @@ int s_iniciarPatota(int cantTripus, int idPatota, char* tareas, int tamanioTotal
 
 		return 0;
 	}
+    */
 }
 
 int p_iniciarPatota(int cantTripus, int idPatota, char* tareas, int tamanioTotal){
@@ -202,17 +203,17 @@ void iniciarTripulante(int socket_cliente){
 	t_tcb* tripulanteNuevo = malloc(sizeof(t_tcb));
 
 	buffer = recibir_buffer(&size, socket_cliente);
-
-	int idTripu = leer_entero(buffer, &desp);
+	/*
+	//TODO:hacer int idTripu = leer_entero(buffer, &desp);
 	//printf("lei el id de un tripu: %d", idTripu);
 
-	int idPato = leer_entero(buffer, &desp);
+	//int idPato = leer_entero(buffer, &desp);
 	//printf("lei el id de una patota: %d", idPato);
 
-	int posX = leer_entero(buffer, &desp);
+	//int posX = leer_entero(buffer, &desp);
 	//printf("lei la pos_x de un tripulante: %d", posX);
 
-	int posY = leer_entero(buffer, &desp);
+	//int posY = leer_entero(buffer, &desp);
 	//printf("lei la pos en Y del tripu: %d", posY);
 
 	log_info(logger, "Iniciando tripulante %d de la patota %d en la posicion %d|%d", idTripu, idPato, posX, posY);
@@ -238,11 +239,12 @@ void iniciarTripulante(int socket_cliente){
 	free(buffer);
 	free(tripulanteNuevo);
 	liberar_conexion(socket_cliente);
+	*/
 }
 
 void s_iniciarTripulante(t_tcb* tripulanteNuevo,int idPato){
 
-
+	/*
     tripulanteNuevo->puntero_pcb = idPato;
 
     //GUARDO LA TCB EN MEMORIA
@@ -258,7 +260,7 @@ void s_iniciarTripulante(t_tcb* tripulanteNuevo,int idPato){
 	pthread_mutex_lock(&mutexListaDeTripulantes);
 	list_add(tablaDeSegmentosDeTripulantes, tablaTCB);
 	pthread_mutex_unlock(&mutexListaDeTripulantes);
-
+	*/
 
 }
 
@@ -302,7 +304,7 @@ void s_expulsarTripulante(int idTripu){
 	int idPato = unaTcb->puntero_pcb;
 
 	//LO SACAMOS DE LA MEMORIA -> CAMBIAMOS EL BITMAP
-	eliminarTcbSeg(idTripu);
+	//TODO: eliminar TCB eliminarTcbSeg(idTripu);
 
 	//LO SACAMOS DE LA LISTA GLOBAL DE TCB
 	sacarTripulanteListaGlobal(idTripu);
@@ -312,7 +314,7 @@ void s_expulsarTripulante(int idTripu){
 	//Resto de la tabla de su patota
 
 
-	restarTripu(idPato);
+	//restarTripu(idPato);
 
 	free(unaTcb);
 
@@ -325,7 +327,7 @@ void sacarTripulanteListaGlobal(int idTripulanteAEliminar){
 		return ((unaTable->idTripulante) == idTripulanteAEliminar );
 	}
 	//pthread_mutex_lock(&mutexListaDeTripulantes);
-	list_remove_and_destroy_by_condition(tablaDeSegmentosDeTripulantes, (void*) mismo_id, (void*) liberarTabla );
+	//TODO: remover de la tabla list_remove_and_destroy_by_condition(tablaDeSegmentosDeTripulantes, (void*) mismo_id, (void*) liberarTabla );
 	//pthread_mutex_unlock(&mutexListaDeTripulantes);
 }
 
@@ -336,7 +338,7 @@ void actualizarUbicacion(int socket_cliente){
 	int size;
 	char * buffer;
 	int desp = 0;
-
+	/*
 	buffer = recibir_buffer(&size, socket_cliente);
 
 	int tid = leer_entero(buffer, &desp);
@@ -369,12 +371,13 @@ void actualizarUbicacion(int socket_cliente){
 	enviarOK(socket_cliente);
 	free(buffer);
 	//liberar_conexion(socket_cliente);
+	*/
 }
 
 //TOTO ES EL MEJOR
 
 t_tcb* buscarTcb(int tid){
-
+	/*
 	t_tcb* nuevaTcb;
 
 	if(elegirEsquema() == SEGMENTACION){
@@ -386,12 +389,13 @@ t_tcb* buscarTcb(int tid){
 	}
 
 	return nuevaTcb;
+	*/
 
 }
 
 void actualizarTripulante(t_tcb* tcb){
 
-
+	/*
 	if(elegirEsquema() == SEGMENTACION){
 		s_actualizarTripulante(tcb);
 	}else if(elegirEsquema() == PAGINACION){
@@ -399,12 +403,14 @@ void actualizarTripulante(t_tcb* tcb){
 	}
 
 	free(tcb);
+	*/
 }
 
 char* buscarTareaEsquema(t_tcb* tcb,int pid, int* esUltima){
 	char* tarea;
     if(elegirEsquema() == SEGMENTACION){
-		tarea = s_enviarOp(tcb, esUltima);
+		printf("Segmentacion");
+    	//tarea = s_enviarOp(tcb, esUltima);
     }else if(elegirEsquema() == PAGINACION){
 		tarea = p_enviarOp(tcb, pid, esUltima);
     }
@@ -413,7 +419,7 @@ char* buscarTareaEsquema(t_tcb* tcb,int pid, int* esUltima){
 }
 
 void expulsarTripulanteID(int idTripu){
-
+	 /*// TODO: expulsar tripulante
 	//LO SACO DEL MAPA
 	char charId = intToChar(idTripu);
 	expulsarDelMapa(charId);
@@ -423,6 +429,7 @@ void expulsarTripulanteID(int idTripu){
     }else if(elegirEsquema() == PAGINACION){
         p_expulsarTripulante(idTripu);
     }
+    */
 
 }
 
@@ -441,18 +448,18 @@ void enviarOperacion(int socket_cliente){
 
 	buffer = recibir_buffer(&size, socket_cliente);
 
-	int idPatota = leer_entero(buffer, &desp);
+	//int idPatota = leer_entero(buffer, &desp);
 	//printf("lei el id de una patota: %d", idPatota);
 
-    int idTripu = leer_entero(buffer, &desp);
+   // int idTripu = leer_entero(buffer, &desp);
 	//printf("lei el id de un tripulante: %d", idTripu);
 
 
 
-    tcb = buscarTcb(idTripu);
-    tarea = buscarTareaEsquema(tcb, idPatota, &esUltima);
+    //tcb = buscarTcb(idTripu);
+    //tarea = buscarTareaEsquema(tcb, idPatota, &esUltima);
 
-    log_info(logger, "La proxima tarea del tripulante %d es %s ",idTripu, tarea);
+    //log_info(logger, "La proxima tarea del tripulante %d es %s ",idTripu, tarea);
 
     if(tarea != NULL)
     {
@@ -465,17 +472,17 @@ void enviarOperacion(int socket_cliente){
 
 
 		//CREO PAQUETE
-			t_paquete* nuevoPaquete = armarPaquete(tarea, esUltima);//no se de donde sale la tarea, esLaUltimaTarea tendria que ser, buscarProx tarea y le pasamos un int que diga si es la ultima o no
+			//t_paquete* nuevoPaquete = armarPaquete(tarea, esUltima);//no se de donde sale la tarea, esLaUltimaTarea tendria que ser, buscarProx tarea y le pasamos un int que diga si es la ultima o no
 		//ENVIAR PAQUETE
-			enviar_paquete(nuevoPaquete, socket_cliente);
+			//enviar_paquete(nuevoPaquete, socket_cliente);
 		//BORRAR PAQUETE
-			eliminar_paquete(nuevoPaquete);
+			//eliminar_paquete(nuevoPaquete);
 		//LIBERAR CONEXION
 			//liberar_conexion(socket_cliente);
     }
     else
     {
-    	enviarFail(socket_cliente);
+    	//enviarFail(socket_cliente);
     	free(tcb);
     }
 
@@ -487,9 +494,9 @@ void enviarOperacion(int socket_cliente){
 char* s_enviar_tarea(t_tcb* tcb, int* esUltima){
 
 	//BUSCAMOS LA TAREA USANDO el PID
-	char* tarea = buscarTarea(tcb->puntero_pcb, tcb->proxInstruccion, esUltima);
+	//char* tarea = buscarTarea(tcb->puntero_pcb, tcb->proxInstruccion, esUltima); TODO: buscar tarea
 
-	return tarea;
+	//return tarea;
 }
 
 char* p_enviarOp(t_tcb* tcb,int idPatota, int* esUltima){
@@ -552,12 +559,12 @@ void cambiarEstado(int socket_cliente){
 	int size;
 	char * buffer;
 	int desp = 0;
-
+	/*
 	buffer = recibir_buffer(&size, socket_cliente);
 
-	int idTripu = leer_entero(buffer, &desp);
+	//int idTripu = leer_entero(buffer, &desp);
 
-	char* nuevoEstado = leer_string(buffer, &desp);
+	//char* nuevoEstado = leer_string(buffer, &desp);
 
 
 	log_info(logger, "El nuevo estado del tripulante %d es %c", idTripu, nuevoEstado[0]);
@@ -574,9 +581,10 @@ void cambiarEstado(int socket_cliente){
 
 		actualizarTripulante(tcb);
 	}
-	enviarOK(socket_cliente);
+	//enviarOK(socket_cliente);
 	log_info(logger,"Envio ok");
 	//liberar_conexion(socket_cliente);
 	free(buffer);
 	free(nuevoEstado);
+	*/
 }

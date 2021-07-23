@@ -9,6 +9,7 @@
 #define PAGINACION_H_
 
 #include "estructurasMemoria.h"
+#include "estructuras.h"
 
 //STRUCTS PAGINACION
 typedef struct

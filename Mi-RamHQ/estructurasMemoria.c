@@ -8,6 +8,9 @@
 
 
 #include "estructurasMemoria.h"
+//#include <nivel-gui/nivel-gui.h>
+//#include <nivel-gui/tad_nivel.h>
+#include "mapa.h"
 
 int iniciarMemoria(void){
 
@@ -17,7 +20,7 @@ int iniciarMemoria(void){
     if (string_equals_ignore_case(ESQUEMA_MEM,"PAGINACION")){
         control = iniciarPaginacion();
     }else if(string_equals_ignore_case(ESQUEMA_MEM, "SEGMENTACION")){
-        control = iniciarSegmentacion();
+        //control = iniciarSegmentacion();
     }
 
     return control; //DEVUELVE 0 SI FALLA LA ELEGIDA
@@ -46,7 +49,7 @@ void liberarMemoria(){
 	if(string_equals_ignore_case(ESQUEMA_MEM,"PAGINACION")){
 		liberarMemoriaPaginacion();
 	}else if(string_equals_ignore_case(ESQUEMA_MEM,"SEGMENTACION")){
-		liberarMemoriaSegmentacion();
+		//liberarMemoriaSegmentacion();
 	}
 
 	free(memoriaPrincipal);
@@ -209,14 +212,14 @@ char* separarTareas(char* tareas, int desplazamiento, int* esUltima){
 		char* tarea = malloc(strlen(tareasSeparadas[desplazamiento])+1);
 		strcpy(tarea, tareasSeparadas[desplazamiento]);
 		free(tareas);
-		liberarStringArray(tareasSeparadas);
+		//liberarStringArray(tareasSeparadas);
 		return tarea;
 
 	}
 	else
 	{
 		free(tareas);
-		liberarStringArray(tareasSeparadas);
+		//liberarStringArray(tareasSeparadas);
 		return NULL;
 	}
 
