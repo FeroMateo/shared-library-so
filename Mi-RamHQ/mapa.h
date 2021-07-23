@@ -12,6 +12,8 @@
 #include <nivel-gui/nivel-gui.h>
 #include <nivel-gui/tad_nivel.h>
 
+#include "miram.h"
+
 int error;
 int columnas;
 int filas;

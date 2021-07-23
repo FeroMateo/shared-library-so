@@ -1564,7 +1564,7 @@ void mostrarTripulantePag(int tid){
 
 void iniciarSwap(){
 
-	if(!existe_archivo(memoriaVirtualPath))//Si no existe el archivo, lo creo
+	if(!existeArchivo(memoriaVirtualPath))//Si no existe el archivo, lo creo
 	{
 		int file = open(memoriaVirtualPath, O_WRONLY);
 		ftruncate(file, TAM_SWAP);
