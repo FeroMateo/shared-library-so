@@ -8,7 +8,27 @@
 #ifndef INTERFAZ_H_
 #define INTERFAZ_H_
 
-#include "miram.h"
+#include "estructurasMemoria.h"
+
+
+typedef struct {
+
+	uint32_t idPatota; 				//Identificador de la patota
+	uint32_t tareas; 			//Direccion logica del inicio de las tareas
+
+}t_pcb;
+
+typedef struct {
+
+	uint32_t idTripulante; 				//ID del tripulante
+	uint32_t posX; 				//Pos en eje x
+	uint32_t posY; 				//Pos en eje y
+	uint32_t proxInstruccion; 	//Id de la proxima instruccion
+	uint32_t puntero_pcb; 		//Direccion logica del PCB del tripulante, su patota
+	char estado; 				//Estado del tripulante (N/R/E/B)
+
+}t_tcb;
+
 
 
 int elegirEsquema();
@@ -53,7 +73,7 @@ char* s_enviarOp(t_tcb* tcb, int* esUltima);
 
 char* p_enviarOp(t_tcb* tcb,int idPatota, int* esUltima);
 
-t_paquete* armarPaquete(char* tarea, int esLaUltima);
+//t_paquete* armarPaquete(char* tarea, int esLaUltima);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////CAMBIAR ESTADO
 void cambiarEstado(int socket_cliente);

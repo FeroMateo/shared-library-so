@@ -12,11 +12,11 @@
 int iniciarMemoria(void){
 
 	idGlobal = 0;
-	log_info(logger, "RAM: %d",config_valores.tamanio_memoria);
+	log_info(logger, "RAM: %d",TAM_MEM);
     int control;
-    if (string_equals_ignore_case(config_valores.esquema_memoria,"PAGINACION")){
+    if (string_equals_ignore_case(ESQUEMA_MEM,"PAGINACION")){
         control = iniciarPaginacion();
-    }else if(string_equals_ignore_case(config_valores.esquema_memoria, "SEGMENTACION")){
+    }else if(string_equals_ignore_case(ESQUEMA_MEM, "SEGMENTACION")){
         control = iniciarSegmentacion();
     }
 
@@ -43,15 +43,15 @@ char* asignarMemoriaBytes(int bytes){
 
 void liberarMemoria(){
 
-	if(string_equals_ignore_case(config_valores.esquema_memoria,"PAGINACION")){
+	if(string_equals_ignore_case(ESQUEMA_MEM,"PAGINACION")){
 		liberarMemoriaPaginacion();
-	}else if(string_equals_ignore_case(config_valores.esquema_memoria,"SEGMENTACION")){
+	}else if(string_equals_ignore_case(ESQUEMA_MEM,"SEGMENTACION")){
 		liberarMemoriaSegmentacion();
 	}
 
 	free(memoriaPrincipal);
 	log_destroy(logger);
-	config_destroy(config);
+	//config_destroy(config);
 	finalizar_mapa();
 
 
@@ -96,7 +96,7 @@ int contarEspaciosLibresDesde(t_bitarray* bitmap, int i){ //CUENTA LOS 0 DEL BIT
 
     pthread_mutex_lock(&mutexBitMapSegment);
 
-    while((bitarray_test_bit(bitmap, i)==0 ) && (i < (config_valores.tamanio_memoria))) {
+    while((bitarray_test_bit(bitmap, i)==0 ) && (i < (TAM_MEM))) {
 
         //MIENTRAS EL BITMAP EN ESA POSICION SEA 0 Y NO NOS PASEMOS DE LOS LIMITES DE LA MEMORIA
         contador ++;
@@ -113,7 +113,7 @@ int contarEspaciosOcupadosDesde(t_bitarray*unBitmap, int i){ //CUENTA LOS 1 DEL 
 
 
 
-    while((bitarray_test_bit(unBitmap, i) == 1) && (i < config_valores.tamanio_memoria)){
+    while((bitarray_test_bit(unBitmap, i) == 1) && (i < TAM_MEM)){
         //MIENTRAS EL BITMAP EN ESA POSICION SEA 1 Y NO NOS PASEMOS DE LOS LIMITES DE LA MEMORIA
         contador++;
         i++;
@@ -195,11 +195,11 @@ char* dameNombre(){
 }
 
 
-
+//MODIFICAR
 
 char* separarTareas(char* tareas, int desplazamiento, int* esUltima){
 
-	char** tareasSeparadas = string_split(tareas,"\n");
+	char** tareasSeparadas = string_split(tareas,",");
 
 	if(tareasSeparadas[desplazamiento] != NULL)
 	{

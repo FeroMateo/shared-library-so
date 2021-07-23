@@ -9,6 +9,16 @@
 #define ESTRUCTURASMEMORIA_H_
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+
+#include<commons/log.h>
+#include<commons/string.h>
+#include<commons/config.h>
+#include<commons/temporal.h>
+#include<readline/readline.h>
+
 #include <commons/bitarray.h>
 #include "miram.h"
 #include <math.h>
@@ -20,11 +30,30 @@
 #include <commons/temporal.h>
 #include <commons/collections/list.h>
 
+
+#include "interfaz.h"
+#include "mapa.h"
 #include "paginacion.h"
 #include "segmentacion.h"
+#include <conections.h>
+
 
 #define MEM_PPAL 0
 #define MEM_VIRT 1
+
+
+
+
+typedef struct
+{
+	char* id_patota;
+	//cant_tareas,tarea1,tarea2,..,tareaN;
+	char* tareas;
+	//cant_trip,trip1,posx,posy,estado,trip2,posx,posy,estado,tripN,posx,posy,estado
+	char* trips;
+
+}t_patota_envio;
+
 
 //COMUNES A TODOS LOS ARCHIVOS
 
@@ -64,8 +93,6 @@ char* dameNombre();
 char* separarTareas(char* tareas, int desplazamiento, int* esUltima);
 
 
-
-
 void mostrarTcb(t_tcb* unaTcb);
 
-#endif /* ESTRUCTURASMEMORIA_H_ */
+#endif // ESTRUCTURASMEMORIA_H_

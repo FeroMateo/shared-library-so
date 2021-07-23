@@ -8,39 +8,34 @@
 #ifndef MIRAM_H_
 #define MIRAM_H_
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <commons/log.h>
-#include <commons/string.h>
-#include <commons/config.h>
-#include <commons/bitarray.h>
-#include <readline/readline.h>
-//#include <utils.h>
-#include <pthread.h>
-#include <stdarg.h>
-#include <math.h>
-
-//#include "mapa.h"
 #include "estructurasMemoria.h"
-//#include "opComunes.h"
 
 
 
-typedef struct
+typedef enum
 {
-	char* ruta_logger;
-    int tamanio_memoria; 		// tamanio en bytes de la memoria real
-    char* esquema_memoria; 		// Esquema de administración de memoria, puedeser: SEGMENTACION o PAGINACION
-    int tamanio_pagina; 		// Tamaño en bytes de la cada página
-    int tamanio_swap; 			// Tamaño en bytes del área de SWAP
-    char* path_swap; 			// Ubicación del archivo de SWAP
-    char* algoritmo_reemplazo; 	// LRU o CLOCK - Indica el algoritmo de reemplazo a utilizar en el esquema de paginación
-    char* criterio_seleccion;   // El tipo de algoritmo de selección de partición libre a utilizar en el esquema de segmentación  (FF/BF)
-	char* puerto;
-	char* ip;
-} Mi_RAM_config;
+	SEGMENTACION,
+	PAGINACION
+}tipo_memoria;
 
-Mi_RAM_config config_valores;
+
+//VARIABLES GLOBALES CONFIG;
+
+int SOCKET_MIRAM;
+
+int PUERTO_MIRAM;
+char* IP_MIRAM;
+char* RUTA_LOG;
+int TAM_MEM; 		// tamanio en bytes de la memoria real
+char* ESQUEMA_MEM; 		// Esquema de administración de memoria, puedeser: SEGMENTACION o PAGINACION
+int TAM_PAG; 		// Tamaño en bytes de la cada página
+int TAM_SWAP; 			// Tamaño en bytes del área de SWAP
+char* PATH_SWAP; 			// Ubicación del archivo de SWAP
+char* ALGORITMO_VM; 	// LRU o CLOCK - Indica el algoritmo de reemplazo a utilizar en el esquema de paginación
+char* CRITERIO_SELECCION;   // El tipo de algoritmo de selección de partición libre a utilizar en el esquema de segmentación  (FF/BF)
+
+t_log* miRam_logger;
+t_config* miRam_config;
 
 void cargar_configuracion(void);
 void manejar_tripus(int socket);

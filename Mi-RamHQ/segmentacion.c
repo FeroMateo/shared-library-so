@@ -1,6 +1,6 @@
 
 #include "segmentacion.h"
-
+/*
 ////////////////////////////////////////////////////////////////SEGMENTACION///////////////////////////////////////////////////////
 int iniciarSegmentacion(void){
     memoriaPrincipal = malloc(config_valores.tamanio_memoria);
@@ -770,3 +770,5 @@ void restarTripu(int idPato){
 
 
 }
+
+*/

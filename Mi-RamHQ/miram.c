@@ -11,29 +11,21 @@ int main(void){
 
 	cargar_configuracion();
 
-	//logger = iniciar_logger();
 	logger = log_create("../miRam.log", "Mi-RAM", 0, LOG_LEVEL_DEBUG);
 
 	signal(SIGUSR1, &signalCompactacion);
 	signal(SIGUSR2, &signalDump);
 
-	mem = iniciarMemoria();
+	int feedback = iniciarMemoria();
 
-	if(!mem){
+	if(!feedback){
 		return 0;
 	}
 
 
-
 	crearMapaVacio();
 
-	//thread para tripulantes
-
-	int server_fd = iniciar_servidor(config_valores.ip, config_valores.puerto);
-
-	pthread_t manejoTripus;
-	pthread_create(&manejoTripus, NULL, (void*) manejar_tripus,(void*)server_fd);
-	pthread_detach(manejoTripus);
+	prender_server();
 
 
 	while (1)
@@ -114,30 +106,59 @@ int main(void){
 }
 
 
+void prender_server()
+{
 
-void manejar_tripus(int server_fd){ //RECIBO TRIPUS
+	int puerto_escucha = PUERTO_MIRAM;
+	SOCKET_MIRAM = crearSocket();
+	log_info(miRam_logger,"<> SERVIDOR LISTO....");
+	asignar_escuchas(SOCKET_MIRAM,puerto_escucha,atender_tripulante);
 
-	while(1){
-
-		//log_info(logger, "Servidor listo para recibir clientes");
-		int socketCliente = esperar_cliente(server_fd);
-
-		pthread_t t;
-		pthread_create(&t, NULL, (void*) manejarConexion, (void*)socketCliente);
-		pthread_detach(t);
-	}
+	// SE ESCUCHA AL MISMO TIEMPO VARIOS CLIENTES, PARA PODER RECIBIR
+	// DISTINTOS TIPOS DE MEMSAJE, SE AGREGAN LA FUNCION ENVIAR MENSAJE Y RECIBIR MENSAJE EN RESPECTIVOS DOCUMENTOS
 }
 
-void manejarConexion(int socket_cliente){
+void* atender_tripulante(Tripulante* trip)
+{
 
-	//log_info(logger, "Se conecto un cliente!!");
-	int codigoOperacion = recibir_operacion(socket_cliente);
 
-	switch(codigoOperacion){
-		case MENSAJE:
-			//recibirMensaje(socket_cliente);
-			break;
-		case INICIAR_PATOTA:
+	while(1)
+		{
+		int cod_op = recibir_operacion(trip->conexion);
+			switch(cod_op)
+			{
+				case ENVIAR_PROXIMA_TAREA:
+
+					actualizarIdTareaARealizar(trip);
+					break;
+				case POSICION_TRIPULANTE_ACTUALIZADA:
+					actualizar_posicion_tripulante(trip);
+					break;
+				case INICIAR_PATOTAS:
+
+					iniciarPatota(trip->conexion);
+                    //iniciarPatota(recibir_patota(trip->conexion));
+					break;
+				case EXPULSAR_TRIPULANTES:
+					expulsarTripulante(trip->conexion);
+					//expulsar_tripulante(trip);
+					break;
+			    case MENSAJE:
+					//recibir_y_guardar_mensaje(trip->conexion);
+					//enviar_mensaje_por_codigo("CHAU",MENSAJE,trip->conexion);
+					break;
+				case -1:
+					//log_error(trip->log, "El cliente se desconecto. Terminando servidor");
+					break;
+
+			}
+
+		}
+
+}
+
+/*
+case INICIAR_PATOTA:
 			iniciarPatota(socket_cliente);
 		break;
 		case INICIAR_TRIPULANTE:
@@ -156,32 +177,31 @@ void manejarConexion(int socket_cliente){
 		case CAMBIAR_ESTADO:
 			cambiarEstado(socket_cliente);
 			break;
-		case -1:
-			//log_info(logger, "El tripulante se desconecto.");
-		break;
-	}
 
-}
+ */
+
 void cargar_configuracion(void)
 {
-	config = config_create("../mi-ram.config"); //Leo el archivo de configuracion
+	miRam_config = config_create("../mi-ram.config"); //Leo el archivo de configuracion
 
-	if (config == NULL) {
+	if (miRam_config == NULL) {
 		perror("Archivo de configuracion de MI-RAM no encontrado");
 		exit(EXIT_FAILURE);
 	}
 
-	config_valores.tamanio_memoria =	        config_get_int_value(config,    "TAMANIO_MEMORIA");
-	config_valores.esquema_memoria = 	        config_get_string_value(config, "ESQUEMA_MEMORIA");
-	config_valores.tamanio_pagina =             config_get_int_value(config,    "TAMANIO_PAGINA");
-	config_valores.tamanio_swap = 	            config_get_int_value(config,    "TAMANIO_SWAP");
-	config_valores.path_swap = 		            config_get_string_value(config, "PATH_SWAP");
-	config_valores.algoritmo_reemplazo =     	config_get_string_value(config, "ALGORITMO_REEMPLAZO");
-	config_valores.puerto =	                    config_get_string_value(config, "PUERTO");
-	config_valores.ip = 						config_get_string_value(config, "IP");
-	config_valores.criterio_seleccion = 		config_get_string_value(config, "CRITERIO_SELECCION");
 
-	//config_destroy(config);
+
+	PUERTO_MIRAM =  config_get_string_value(miRam_config,"PUERTO");
+	IP_MIRAM = config_get_string_value(miRam_config,"IP");
+	TAM_MEM = config_get_string_value(miRam_config, "ESQUEMA_MEMORIA");
+	ESQUEMA_MEM =config_get_string_value(miRam_config, "ESQUEMA_MEMORIA");
+	TAM_PAG = config_get_int_value(miRam_config,"TAMANIO_PAGINA");
+	TAM_SWAP =config_get_int_value(miRam_config, "TAMANIO_SWAP");
+	PATH_SWAP= config_get_string_value(miRam_config,"PATH_SWAP");
+	ALGORITMO_VM = config_get_string_value(miRam_config,"ALGORITMO_REEMPLAZO");
+	CRITERIO_SELECCION = config_get_string_value(miRam_config,"CRITERIO_SELECCION");
+
+
 }
 
 
@@ -198,9 +218,9 @@ void signalDump(int sig){
 
 void dump(){
 
-	if(string_equals_ignore_case(config_valores.esquema_memoria , "SEGMENTACION")){
+	if(string_equals_ignore_case(ESQUEMA_MEM, "SEGMENTACION")){
 		dumpSegmentacion();
-	}else if(string_equals_ignore_case(config_valores.esquema_memoria , "PAGINACION")){
+	}else if(string_equals_ignore_case(ESQUEMA_MEM, "PAGINACION")){
 		dumpPaginacion();
 	}
 }

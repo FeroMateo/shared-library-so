@@ -11,43 +11,85 @@ int elegirEsquema(){
 
 	int esquema;
 
-	if(string_equals_ignore_case(config_valores.esquema_memoria,"PAGINACION")){
+	if(string_equals_ignore_case(ESQUEMA_MEM,"PAGINACION")){
         esquema = PAGINACION;
-    }else if(string_equals_ignore_case(config_valores.esquema_memoria, "SEGMENTACION")){
+    }else if(string_equals_ignore_case(ESQUEMA_MEM, "SEGMENTACION")){
         esquema = SEGMENTACION;
     }
 
 	return esquema;
 }
 
+t_patota_envio* recibir_patota(int socket)
+{
+
+	log_info(logger,"<>START: Recibir patota");
+	t_patota_envio* patota = malloc(sizeof(t_patota_envio));
+	patota->id_patota = recibir_id(socket);
+	int i = 1;
+	while(i==1)
+	{
+		int cod_op = recibir_operacion(socket);
+		switch(cod_op)
+		{
+		case RECIBIR_TAREAS:
+			patota->tareas = recibir_y_guardar_mensaje(socket);
+			break;
+		case RECIBIR_TRIPS:
+			patota->trips = recibir_y_guardar_mensaje(socket);
+			break;
+		case FIN_PATOTA:
+			i=0;
+			break;
+		default:
+			///log_error(miRam_logger,"ERROR AL RECIBIR PATOTA");
+			break;
+		}
+
+	}
+
+	log_info(logger,"<>END: Recibir patota");
+	return patota;
+
+
+}
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////INICIAR PATOTA
 void iniciarPatota(int socket_cliente){
     int size;
-	char * buffer;
 	int desp = 0;
 
-	buffer = recibir_buffer(&size, socket_cliente);
 
-	char* tareas = leer_string(buffer, &desp);	//STRING DE TODAS LAS TAREAS \n
-	//printf("lei el string de las tareas");
 
-	int idPatota = leer_entero(buffer, &desp);
-	//printf("lei el id de una patota: %d", idPatota);
+	t_patota_envio* patota = recibir_patota(socket_cliente);
 
-	int cantTripus = leer_entero(buffer, &desp);
-	//printf("lei la cantidad de tripus: %d", cantTripus);
+	char** tareas_decriptadas = malloc(300);
 
-	int tamanioTotal = 21 * cantTripus + (strlen(tareas)+1) + 8;
+	tareas_decriptadas = string_split(patota->trips,",");
 
-	log_info(logger, "Iniciando patota %d con %d tripulantes que pesa %d...", idPatota, cantTripus, tamanioTotal);
+	char** tripulantes_decriptados = malloc(300);
+
+	tripulantes_decriptados = string_split(patota->trips,",");
+
+	int pid = atoi(patota->id_patota);
+
+	int cantidadDeTareas = atoi(tareas_decriptadas[0]);
+
+	int cantidadDeTripulantes = atoi(tripulantes_decriptados[0]);
+
+	int tamanioTotal = 21 * cantidadDeTripulantes + (strlen(patota->tareas)+1) + 8;
+
+	log_info(logger, "Iniciando patota %d con %d tripulantes que pesa %d...", pid, cantidadDeTripulantes, tamanioTotal);
 
 
 	int pudeGuardar;
 
 	if(elegirEsquema() == SEGMENTACION){
-        pudeGuardar = s_iniciarPatota(cantTripus, idPatota, tareas, tamanioTotal);               //DEVUELVE EL PAQUETE OK O FAIL
+        pudeGuardar = s_iniciarPatota(cantidadDeTripulantes, pid, patota->tareas, tamanioTotal);               //DEVUELVE EL PAQUETE OK O FAIL
     }else if(elegirEsquema() == PAGINACION){
-        pudeGuardar = p_iniciarPatota(cantTripus, idPatota, tareas, tamanioTotal);
+        pudeGuardar = p_iniciarPatota(cantidadDeTripulantes, pid, patota->tareas, tamanioTotal);
     }
 
 	if(pudeGuardar == 1){
@@ -60,8 +102,12 @@ void iniciarPatota(int socket_cliente){
 		enviarFail(socket_cliente);
 	}
 
-	free(buffer);
-	free(tareas);
+
+	free(tareas_decriptadas);
+	free(tripulantes_decriptados);
+
+//	free(buffer);
+//	free(tareas);
 }
 
 int s_iniciarPatota(int cantTripus, int idPatota, char* tareas, int tamanioTotal){
@@ -101,7 +147,7 @@ int s_iniciarPatota(int cantTripus, int idPatota, char* tareas, int tamanioTotal
 
 int p_iniciarPatota(int cantTripus, int idPatota, char* tareas, int tamanioTotal){
     //HAYLUGAR -> UN TCB = 21 BYTES, VAN A HABER N TCBS + 1 PCB (OCUPA 8 BYTES) + TAREAS
-	int paginasNecesarias = ceil((double) tamanioTotal/ (double) config_valores.tamanio_pagina);
+	int paginasNecesarias = ceil((double) tamanioTotal/ (double) TAM_PAG);
 
 	int tamanioTareas = (strlen(tareas) + 1);
 
@@ -240,19 +286,14 @@ void p_iniciarTripulante(t_tcb* tripulanteNuevo, int idPatota){
 
 void expulsarTripulante(int socket_cliente){
 	int size;
-	char * buffer;
+	char* id;
 	int desp = 0;
 
-	buffer = recibir_buffer(&size, socket_cliente);
+	id = recibir_id(socket_cliente);
 
-	int idTripu = leer_entero(buffer, &desp);
-	//printf("lei el id de un tripulante: %d", idTripu);
+	expulsarTripulanteID(id);
 
-
-	expulsarTripulanteID(idTripu);
-
-
-	free(buffer);
+	free(id);
 }
 
 void s_expulsarTripulante(int idTripu){
@@ -443,8 +484,7 @@ void enviarOperacion(int socket_cliente){
 
 }
 
-char* s_enviarOp(t_tcb* tcb, int* esUltima){
-
+char* s_enviar_tarea(t_tcb* tcb, int* esUltima){
 
 	//BUSCAMOS LA TAREA USANDO el PID
 	char* tarea = buscarTarea(tcb->puntero_pcb, tcb->proxInstruccion, esUltima);
@@ -458,7 +498,7 @@ char* p_enviarOp(t_tcb* tcb,int idPatota, int* esUltima){
 
 	return tarea;
 }
-
+/*
 t_paquete* armarPaquete(char* tarea, int esLaUltima){
 
 	//SACAMOS LA INFO DE LA TAREA
@@ -472,8 +512,8 @@ t_paquete* armarPaquete(char* tarea, int esLaUltima){
 	else if(	string_equals_ignore_case(splitPorEspacio[0], "GENERAR_COMIDA"))  { codigoOperacion= GENERAR_COMIDA;	}
 	else if(	string_equals_ignore_case(splitPorEspacio[0], "CONSUMIR_COMIDA")) { codigoOperacion= CONSUMIR_COMIDA;	}
 	else if(	string_equals_ignore_case(splitPorEspacio[0], "GENERAR_BASURA"))  { codigoOperacion= GENERAR_BASURA;	}
-	else if(	string_equals_ignore_case(splitPorEspacio[0], "DESCARTAR_BASURA")){ codigoOperacion= DESCARTAR_BASURA;	}
-	else                                                                          { codigoOperacion= MOVERSE;           }
+	else if(	string_equals_ignore_case(splitPorEspacio[0], "DESCARTAR_BASURA")){ codigoOperacion= REGISTRAR_INICIO_TAREA;	}//DESCARTAR BASURA
+	else                                                                          { codigoOperacion= REGISTRAR_MOVIMIENTO;           }
 
 	int posX 				= atoi(splitPorPuntoYcoma[1]);
 	int posY 				= atoi(splitPorPuntoYcoma[2]);
@@ -504,6 +544,8 @@ t_paquete* armarPaquete(char* tarea, int esLaUltima){
 	return nuevoPaquete;
 }
 
+*/
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////CAMBIAR ESTADO
 void cambiarEstado(int socket_cliente){
 
@@ -514,13 +556,9 @@ void cambiarEstado(int socket_cliente){
 	buffer = recibir_buffer(&size, socket_cliente);
 
 	int idTripu = leer_entero(buffer, &desp);
-	//printf("lei el id de un tripulante: %d", idTripu);
-
-	//int idPatota = leer_entero(buffer, &desp);//ESTA AL PEDO PERO NO LO SACAMOS PORQUE EL ESTADO VIENE DESPUES Y SINO CAMBIA EL DESPLAZAMIENTO
-	//printf("lei el id de una patota: %d", idPatota);
 
 	char* nuevoEstado = leer_string(buffer, &desp);
-	//printf("lei el nuevo estado");
+
 
 	log_info(logger, "El nuevo estado del tripulante %d es %c", idTripu, nuevoEstado[0]);
 
