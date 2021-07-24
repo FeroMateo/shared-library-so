@@ -79,7 +79,7 @@ void iniciarPatota(int socket_cliente){
 
 	int cantidadDeTripulantes = atoi(tripulantes_decriptados[0]);
 
-	char* tareas = string_substring(patota->tareas,2,strlen(patota->tareas));
+	char* tareas = string_substring(patota->tareas,2,strlen(patota->tareas)-1);
 
 	int tamanioTotal = 21 * cantidadDeTripulantes + (strlen(tareas)+1) + 8;
 
@@ -94,29 +94,28 @@ void iniciarPatota(int socket_cliente){
     }
 
 	if(pudeGuardar == 1){
-		enviar_mensaje_por_codigo("OK",MENSAJE,socket_cliente);
+		//enviar_mensaje_por_codigo("OK",MENSAJE,socket_cliente);
 		log_info(logger,"Envio ok");
+		int i=0;
+		int k = 1;
+		while(i<cantidadDeTripulantes)
+		{
+
+			iniciarTripulante(atoi(tripulantes_decriptados[k]),pid,atoi(tripulantes_decriptados[k+1]),atoi(tripulantes_decriptados[k+2]));
+			i++;
+			k+=3;
+			}
 	}
 	else
 	{
 		log_error(logger, "No hay lugar para alojar la patota en memoria, lo sentimos");
-		enviar_mensaje_por_codigo("FAIL",MENSAJE,socket_cliente);
-	}
-
-	int i =1;
-	while(i<=cantidadDeTripulantes)
-	{
-
-		iniciarTripulante(atoi(tripulantes_decriptados[i]),pid,atoi(tripulantes_decriptados[i+1]),atoi(tripulantes_decriptados[i+2]));
-		i+=3;
+		//enviar_mensaje_por_codigo("FAIL",MENSAJE,socket_cliente);
 	}
 
 
 	free(tareas_decriptadas);
 	free(tripulantes_decriptados);
 
-//	free(buffer);
-//	free(tareas);
 }
 
 int s_iniciarPatota(int cantTripus, int idPatota, char* tareas, int tamanioTotal){
@@ -207,11 +206,6 @@ int p_iniciarPatota(int cantTripus, int idPatota, char* tareas, int tamanioTotal
 void iniciarTripulante(int tid,int pid,int posx, int posy)
 {
 
-
-    int size;
-	char * buffer;
-	int desp = 0;
-
 	t_tcb* tripulanteNuevo = malloc(sizeof(t_tcb));
 
 
@@ -236,8 +230,8 @@ void iniciarTripulante(int tid,int pid,int posx, int posy)
         p_iniciarTripulante(tripulanteNuevo, tid);
     }
 
-	//log_info(logger, "Guarde la tcb de %d en memoria", tripulanteNuevo->idTripulante);
-	free(buffer);
+	log_info(logger, "Guarde la tcb de %d en memoria", tripulanteNuevo->idTripulante);
+
 	free(tripulanteNuevo);
 }
 
@@ -437,7 +431,7 @@ void enviarOperacion(int socket_cliente)
 
 	int pid = atoi(mensaje_dec[0]);
 	int tid = atoi(mensaje_dec[1]);
-
+//
 
     tcb = buscarTcb(tid);
     tarea = buscarTareaEsquema(tcb,pid);
@@ -459,7 +453,7 @@ void enviarOperacion(int socket_cliente)
     	enviar_mensaje_por_codigo("SIN_TAREAS",ENVIAR_PROXIMA_TAREA,socket_cliente);
     	free(tcb);
     }
-
+//
 	free(tarea);
 
 }

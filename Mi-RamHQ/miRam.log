@@ -45,3 +45,249 @@ O] 22:51:53:612 Mi-RAM/(13100:13109): Iniciando patota 1 con 1 tripulantes que p
 [INFO] 22:59:19:127 Mi-RAM/(13315:13315): Tengo 0 marcos de 32 bytes en memoria principal
 [INFO] 22:59:19:127 Mi-RAM/(13315:13315): Tengo 512 marcos de 32 bytes en memoria virtual
 [INFO] 22:59:19:130 Mi-RAM/(13315:13315): <> SERVIDOR LISTO....
+[INFO] 23:28:40:010 Mi-RAM/(4083:4083): RAM: 8192
+[INFO] 23:28:40:014 Mi-RAM/(4083:4083): SWAP: 16384
+[INFO] 23:28:40:014 Mi-RAM/(4083:4083): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 23:28:40:014 Mi-RAM/(4083:4083): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 23:28:40:014 Mi-RAM/(4083:4083): <> SERVIDOR LISTO....
+[INFO] 23:29:16:433 Mi-RAM/(4108:4108): RAM: 8192
+[INFO] 23:29:17:191 Mi-RAM/(4108:4108): SWAP: 16384
+[INFO] 23:29:17:226 Mi-RAM/(4108:4108): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 23:29:17:255 Mi-RAM/(4108:4108): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 23:29:17:311 Mi-RAM/(4108:4108): <> SERVIDOR LISTO....
+[INFO] 23:29:32:185 Mi-RAM/(4108:4116): <>START: Recibir patota
+[INFO] 23:29:32:235 Mi-RAM/(4108:4116): <>END: Recibir patota
+[INFO] 23:32:29:924 Mi-RAM/(4207:4207): RAM: 8192
+[INFO] 23:32:29:937 Mi-RAM/(4207:4207): SWAP: 16384
+[INFO] 23:32:29:938 Mi-RAM/(4207:4207): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 23:32:29:938 Mi-RAM/(4207:4207): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 23:32:29:938 Mi-RAM/(4207:4207): <> SERVIDOR LISTO....
+[INFO] 23:32:41:061 Mi-RAM/(4207:4213): <>START: Recibir patota
+[INFO] 23:32:41:061 Mi-RAM/(4207:4213): <>END: Recibir patota
+[INFO] 23:32:41:061 Mi-RAM/(4207:4213): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 23:34:30:482 Mi-RAM/(4259:4259): RAM: 8192
+[INFO] 23:34:30:600 Mi-RAM/(4259:4259): SWAP: 16384
+[INFO] 23:34:30:604 Mi-RAM/(4259:4259): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 23:34:30:612 Mi-RAM/(4259:4259): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 23:34:30:618 Mi-RAM/(4259:4259): <> SERVIDOR LISTO....
+[INFO] 23:34:45:246 Mi-RAM/(4259:4268): <>START: Recibir patota
+[INFO] 23:34:45:264 Mi-RAM/(4259:4268): <>END: Recibir patota
+[INFO] 23:40:51:459 Mi-RAM/(4471:4471): RAM: 8192
+[INFO] 23:40:51:463 Mi-RAM/(4471:4471): SWAP: 16384
+[INFO] 23:40:51:463 Mi-RAM/(4471:4471): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 23:40:51:463 Mi-RAM/(4471:4471): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 23:40:51:463 Mi-RAM/(4471:4471): <> SERVIDOR LISTO....
+[INFO] 23:41:54:455 Mi-RAM/(4471:4486): <>START: Recibir patota
+[INFO] 23:41:54:456 Mi-RAM/(4471:4486): <>END: Recibir patota
+[INFO] 23:41:54:456 Mi-RAM/(4471:4486): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 23:41:54:460 Mi-RAM/(4471:4486): Guarde las tareas de la patota 1 en las paginas: 
+[INFO] 23:41:54:466 Mi-RAM/(4471:4486): 0
+[INFO] 23:41:54:466 Mi-RAM/(4471:4486): 1
+[INFO] 23:43:45:117 Mi-RAM/(4571:4571): RAM: 8192
+[INFO] 23:43:45:131 Mi-RAM/(4571:4571): SWAP: 16384
+[INFO] 23:43:45:132 Mi-RAM/(4571:4571): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 23:43:45:132 Mi-RAM/(4571:4571): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 23:43:45:132 Mi-RAM/(4571:4571): <> SERVIDOR LISTO....
+[INFO] 23:43:56:695 Mi-RAM/(4571:4577): <>START: Recibir patota
+[INFO] 23:43:56:695 Mi-RAM/(4571:4577): <>END: Recibir patota
+[INFO] 23:43:56:695 Mi-RAM/(4571:4577): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 23:43:56:712 Mi-RAM/(4571:4577): Guarde las tareas de la patota 1 en las paginas: 
+[INFO] 23:43:56:712 Mi-RAM/(4571:4577): 0
+[INFO] 23:43:56:712 Mi-RAM/(4571:4577): 1
+[INFO] 23:43:56:713 Mi-RAM/(4571:4577): 2
+[INFO] 23:43:56:713 Mi-RAM/(4571:4577): 3
+[INFO] 23:43:56:713 Mi-RAM/(4571:4577): 4
+[INFO] 23:43:56:713 Mi-RAM/(4571:4577): Guarde la pcb de la patota 1 en las pagina 4 y su desplazamiento es 30
+[INFO] 23:43:56:713 Mi-RAM/(4571:4577): Envio ok
+[INFO] 23:43:56:714 Mi-RAM/(4571:4577): Iniciando tripulante 1 de la patota 1 en la posicion 0|0
+[INFO] 23:44:28:717 Mi-RAM/(4595:4595): RAM: 8192
+[INFO] 23:44:29:010 Mi-RAM/(4595:4595): SWAP: 16384
+[INFO] 23:44:29:030 Mi-RAM/(4595:4595): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 23:44:29:057 Mi-RAM/(4595:4595): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 23:44:29:080 Mi-RAM/(4595:4595): <> SERVIDOR LISTO....
+[INFO] 23:44:42:058 Mi-RAM/(4595:4606): <>START: Recibir patota
+[INFO] 23:44:42:071 Mi-RAM/(4595:4606): <>END: Recibir patota
+[INFO] 23:44:42:081 Mi-RAM/(4595:4606): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 23:44:42:249 Mi-RAM/(4595:4606): Guarde las tareas de la patota 1 en las paginas: 
+[INFO] 23:44:42:252 Mi-RAM/(4595:4606): 0
+[INFO] 23:44:42:253 Mi-RAM/(4595:4606): 1
+[INFO] 23:44:42:254 Mi-RAM/(4595:4606): 2
+[INFO] 23:44:42:254 Mi-RAM/(4595:4606): 3
+[INFO] 23:44:42:254 Mi-RAM/(4595:4606): 4
+[INFO] 23:44:42:289 Mi-RAM/(4595:4606): Guarde la pcb de la patota 1 en las pagina 4 y su desplazamiento es 30
+[INFO] 23:44:42:291 Mi-RAM/(4595:4606): Envio ok
+[INFO] 23:44:42:292 Mi-RAM/(4595:4606): Iniciando tripulante 1 de la patota 1 en la posicion 0|0
+[INFO] 23:51:49:597 Mi-RAM/(4777:4777): RAM: 8192
+[INFO] 23:51:49:609 Mi-RAM/(4777:4777): SWAP: 16384
+[INFO] 23:51:49:609 Mi-RAM/(4777:4777): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 23:51:49:609 Mi-RAM/(4777:4777): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 23:51:49:609 Mi-RAM/(4777:4777): <> SERVIDOR LISTO....
+[INFO] 23:51:58:195 Mi-RAM/(4777:4784): <>START: Recibir patota
+[INFO] 23:51:58:195 Mi-RAM/(4777:4784): <>END: Recibir patota
+[INFO] 23:51:58:195 Mi-RAM/(4777:4784): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 23:51:58:211 Mi-RAM/(4777:4784): Guarde las tareas de la patota 1 en las paginas: 
+[INFO] 23:51:58:229 Mi-RAM/(4777:4784): 0
+[INFO] 23:51:58:229 Mi-RAM/(4777:4784): 1
+[INFO] 23:51:58:229 Mi-RAM/(4777:4784): 2
+[INFO] 23:51:58:230 Mi-RAM/(4777:4784): 3
+[INFO] 23:51:58:230 Mi-RAM/(4777:4784): 4
+[INFO] 23:51:58:231 Mi-RAM/(4777:4784): Guarde la pcb de la patota 1 en las pagina 4 y su desplazamiento es 30
+[INFO] 23:51:58:238 Mi-RAM/(4777:4784): Envio ok
+[INFO] 23:51:58:238 Mi-RAM/(4777:4784): Iniciando tripulante 1 de la patota 1 en la posicion 0|0
+[INFO] 23:51:58:238 Mi-RAM/(4777:4784): Guarde al tripulante 1 en la pagina 5 y su desplazamiento es 6
+[INFO] 23:51:58:238 Mi-RAM/(4777:4784): Guarde la tcb de 1 en memoria
+[INFO] 00:00:49:940 Mi-RAM/(4960:4960): RAM: 8192
+[INFO] 00:00:49:943 Mi-RAM/(4960:4960): SWAP: 16384
+[INFO] 00:00:49:944 Mi-RAM/(4960:4960): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 00:00:49:944 Mi-RAM/(4960:4960): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 00:00:49:944 Mi-RAM/(4960:4960): <> SERVIDOR LISTO....
+[INFO] 00:01:00:257 Mi-RAM/(4960:4966): <>START: Recibir patota
+[INFO] 00:01:00:257 Mi-RAM/(4960:4966): <>END: Recibir patota
+[INFO] 00:01:00:257 Mi-RAM/(4960:4966): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 00:01:00:262 Mi-RAM/(4960:4966): Guarde las tareas de la patota 1 en las paginas: 
+[INFO] 00:01:00:262 Mi-RAM/(4960:4966): 0
+[INFO] 00:01:00:262 Mi-RAM/(4960:4966): 1
+[INFO] 00:01:00:262 Mi-RAM/(4960:4966): 2
+[INFO] 00:01:00:262 Mi-RAM/(4960:4966): 3
+[INFO] 00:01:00:262 Mi-RAM/(4960:4966): 4
+[INFO] 00:01:00:263 Mi-RAM/(4960:4966): Guarde la pcb de la patota 1 en las pagina 4 y su desplazamiento es 30
+[INFO] 00:01:00:263 Mi-RAM/(4960:4966): Envio ok
+[INFO] 00:01:00:263 Mi-RAM/(4960:4966): Iniciando tripulante 1 de la patota 1 en la posicion 0|0
+[INFO] 00:01:00:263 Mi-RAM/(4960:4966): Guarde al tripulante 1 en la pagina 5 y su desplazamiento es 6
+[INFO] 00:01:00:263 Mi-RAM/(4960:4966): Guarde la tcb de 1 en memoria
+[INFO] 00:01:41:774 Mi-RAM/(4980:4980): RAM: 8192
+[INFO] 00:01:41:776 Mi-RAM/(4980:4980): SWAP: 16384
+[INFO] 00:01:41:777 Mi-RAM/(4980:4980): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 00:01:41:777 Mi-RAM/(4980:4980): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 00:01:41:777 Mi-RAM/(4980:4980): <> SERVIDOR LISTO....
+[INFO] 00:02:35:882 Mi-RAM/(5034:5034): RAM: 8192
+[INFO] 00:02:35:886 Mi-RAM/(5034:5034): SWAP: 16384
+[INFO] 00:02:35:886 Mi-RAM/(5034:5034): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 00:02:35:886 Mi-RAM/(5034:5034): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 00:02:35:886 Mi-RAM/(5034:5034): <> SERVIDOR LISTO....
+[INFO] 00:05:29:656 Mi-RAM/(5148:5148): RAM: 8192
+[INFO] 00:05:29:865 Mi-RAM/(5148:5148): SWAP: 16384
+[INFO] 00:05:29:879 Mi-RAM/(5148:5148): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 00:05:29:897 Mi-RAM/(5148:5148): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 00:05:29:912 Mi-RAM/(5148:5148): <> SERVIDOR LISTO....
+[INFO] 00:05:42:351 Mi-RAM/(5148:5155): <>START: Recibir patota
+[INFO] 00:05:42:365 Mi-RAM/(5148:5155): <>END: Recibir patota
+[INFO] 00:05:42:384 Mi-RAM/(5148:5155): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 00:05:42:615 Mi-RAM/(5148:5155): Guarde las tareas de la patota 1 en las paginas: 
+[INFO] 00:05:42:624 Mi-RAM/(5148:5155): 0
+[INFO] 00:05:42:626 Mi-RAM/(5148:5155): 1
+[INFO] 00:05:42:626 Mi-RAM/(5148:5155): 2
+[INFO] 00:05:42:627 Mi-RAM/(5148:5155): 3
+[INFO] 00:05:42:627 Mi-RAM/(5148:5155): 4
+[INFO] 00:05:42:692 Mi-RAM/(5148:5155): Guarde la pcb de la patota 1 en las pagina 4 y su desplazamiento es 30
+[INFO] 00:05:42:693 Mi-RAM/(5148:5155): Envio ok
+[INFO] 00:05:42:695 Mi-RAM/(5148:5155): Iniciando tripulante 1 de la patota 1 en la posicion 0|0
+[INFO] 00:05:42:714 Mi-RAM/(5148:5155): Guarde al tripulante 1 en la pagina 5 y su desplazamiento es 6
+[INFO] 00:05:42:715 Mi-RAM/(5148:5155): Guarde la tcb de 1 en memoria
+[INFO] 00:10:57:036 Mi-RAM/(5356:5356): RAM: 8192
+[INFO] 00:10:57:037 Mi-RAM/(5356:5356): SWAP: 16384
+[INFO] 00:10:57:037 Mi-RAM/(5356:5356): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 00:10:57:037 Mi-RAM/(5356:5356): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 00:10:57:037 Mi-RAM/(5356:5356): <> SERVIDOR LISTO....
+[INFO] 00:11:06:551 Mi-RAM/(5356:5368): <>START: Recibir patota
+[INFO] 00:11:06:551 Mi-RAM/(5356:5368): <>END: Recibir patota
+[INFO] 00:11:06:551 Mi-RAM/(5356:5368): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 00:13:03:647 Mi-RAM/(5446:5446): RAM: 8192
+[INFO] 00:13:03:647 Mi-RAM/(5446:5446): SWAP: 16384
+[INFO] 00:13:03:647 Mi-RAM/(5446:5446): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 00:13:03:647 Mi-RAM/(5446:5446): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 00:13:03:647 Mi-RAM/(5446:5446): <> SERVIDOR LISTO....
+[INFO] 00:13:15:470 Mi-RAM/(5446:5457): <>START: Recibir patota
+[INFO] 00:13:15:470 Mi-RAM/(5446:5457): <>END: Recibir patota
+[INFO] 00:13:15:470 Mi-RAM/(5446:5457): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 00:14:48:565 Mi-RAM/(5532:5532): RAM: 8192
+[INFO] 00:14:48:565 Mi-RAM/(5532:5532): SWAP: 16384
+[INFO] 00:14:48:565 Mi-RAM/(5532:5532): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 00:14:48:565 Mi-RAM/(5532:5532): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 00:14:48:565 Mi-RAM/(5532:5532): <> SERVIDOR LISTO....
+[INFO] 00:15:02:305 Mi-RAM/(5532:5544): <>START: Recibir patota
+[INFO] 00:15:02:306 Mi-RAM/(5532:5544): <>END: Recibir patota
+[INFO] 00:15:02:306 Mi-RAM/(5532:5544): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 00:16:20:743 Mi-RAM/(5532:5544): Guarde las tareas de la patota 1 en las paginas: 
+[INFO] 00:16:20:743 Mi-RAM/(5532:5544): 0
+[INFO] 00:16:20:743 Mi-RAM/(5532:5544): 1
+[INFO] 00:16:20:744 Mi-RAM/(5532:5544): 2
+[INFO] 00:16:20:744 Mi-RAM/(5532:5544): 3
+[INFO] 00:16:20:744 Mi-RAM/(5532:5544): 4
+[INFO] 00:16:40:648 Mi-RAM/(5532:5544): Guarde la pcb de la patota 1 en las pagina 4 y su desplazamiento es 30
+[INFO] 00:16:40:649 Mi-RAM/(5532:5544): Envio ok
+[INFO] 00:16:40:649 Mi-RAM/(5532:5544): Iniciando tripulante 1 de la patota 1 en la posicion 0|0
+[INFO] 00:16:44:321 Mi-RAM/(5532:5544): Guarde al tripulante 1 en la pagina 5 y su desplazamiento es 6
+[INFO] 00:16:44:321 Mi-RAM/(5532:5544): Guarde la tcb de 1 en memoria
+[INFO] 00:19:41:593 Mi-RAM/(5751:5751): RAM: 8192
+[INFO] 00:19:41:594 Mi-RAM/(5751:5751): SWAP: 16384
+[INFO] 00:19:41:594 Mi-RAM/(5751:5751): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 00:19:41:594 Mi-RAM/(5751:5751): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 00:19:41:594 Mi-RAM/(5751:5751): <> SERVIDOR LISTO....
+[INFO] 00:19:56:685 Mi-RAM/(5751:5766): <>START: Recibir patota
+[INFO] 00:19:56:685 Mi-RAM/(5751:5766): <>END: Recibir patota
+[INFO] 00:19:56:685 Mi-RAM/(5751:5766): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 00:20:13:976 Mi-RAM/(5751:5766): Guarde las tareas de la patota 1 en las paginas: 
+[INFO] 00:20:13:977 Mi-RAM/(5751:5766): 0
+[INFO] 00:20:13:977 Mi-RAM/(5751:5766): 1
+[INFO] 00:20:13:977 Mi-RAM/(5751:5766): 2
+[INFO] 00:20:13:977 Mi-RAM/(5751:5766): 3
+[INFO] 00:20:13:977 Mi-RAM/(5751:5766): 4
+[INFO] 00:20:29:888 Mi-RAM/(5751:5766): Guarde la pcb de la patota 1 en las pagina 4 y su desplazamiento es 30
+[INFO] 00:20:29:888 Mi-RAM/(5751:5766): Envio ok
+[INFO] 00:20:29:888 Mi-RAM/(5751:5766): Iniciando tripulante 1 de la patota 1 en la posicion 0|0
+[INFO] 00:20:41:248 Mi-RAM/(5751:5766): Guarde al tripulante 1 en la pagina 5 y su desplazamiento es 6
+[INFO] 00:20:41:248 Mi-RAM/(5751:5766): Guarde la tcb de 1 en memoria
+[INFO] 00:21:39:583 Mi-RAM/(5960:5960): RAM: 8192
+[INFO] 00:21:39:583 Mi-RAM/(5960:5960): SWAP: 16384
+[INFO] 00:21:39:583 Mi-RAM/(5960:5960): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 00:21:39:583 Mi-RAM/(5960:5960): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 00:21:39:583 Mi-RAM/(5960:5960): <> SERVIDOR LISTO....
+[INFO] 00:22:35:654 Mi-RAM/(5960:5991): <>START: Recibir patota
+[INFO] 00:22:35:654 Mi-RAM/(5960:5991): <>END: Recibir patota
+[INFO] 00:22:35:654 Mi-RAM/(5960:5991): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 00:22:49:005 Mi-RAM/(5960:5991): Guarde las tareas de la patota 1 en las paginas: 
+[INFO] 00:22:49:005 Mi-RAM/(5960:5991): 0
+[INFO] 00:22:49:005 Mi-RAM/(5960:5991): 1
+[INFO] 00:22:49:005 Mi-RAM/(5960:5991): 2
+[INFO] 00:22:49:005 Mi-RAM/(5960:5991): 3
+[INFO] 00:22:49:005 Mi-RAM/(5960:5991): 4
+[INFO] 00:22:52:844 Mi-RAM/(5960:5991): Guarde la pcb de la patota 1 en las pagina 4 y su desplazamiento es 30
+[INFO] 00:22:52:844 Mi-RAM/(5960:5991): Envio ok
+[INFO] 00:22:52:845 Mi-RAM/(5960:5991): Iniciando tripulante 1 de la patota 1 en la posicion 0|0
+[INFO] 00:22:54:452 Mi-RAM/(5960:5991): Guarde al tripulante 1 en la pagina 5 y su desplazamiento es 6
+[INFO] 00:22:54:452 Mi-RAM/(5960:5991): Guarde la tcb de 1 en memoria
+[INFO] 00:27:11:493 Mi-RAM/(6313:6313): RAM: 8192
+[INFO] 00:27:11:493 Mi-RAM/(6313:6313): SWAP: 16384
+[INFO] 00:27:11:493 Mi-RAM/(6313:6313): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 00:27:11:493 Mi-RAM/(6313:6313): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 00:27:11:493 Mi-RAM/(6313:6313): <> SERVIDOR LISTO....
+[INFO] 00:28:49:982 Mi-RAM/(6313:6363): <>START: Recibir patota
+[INFO] 00:28:49:982 Mi-RAM/(6313:6363): <>END: Recibir patota
+[INFO] 00:28:49:982 Mi-RAM/(6313:6363): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 00:29:20:834 Mi-RAM/(6313:6363): Guarde las tareas de la patota 1 en las paginas: 
+[INFO] 00:29:20:835 Mi-RAM/(6313:6363): 0
+[INFO] 00:29:20:835 Mi-RAM/(6313:6363): 1
+[INFO] 00:29:20:835 Mi-RAM/(6313:6363): 2
+[INFO] 00:29:20:835 Mi-RAM/(6313:6363): 3
+[INFO] 00:29:20:835 Mi-RAM/(6313:6363): 4
+[INFO] 00:29:20:835 Mi-RAM/(6313:6363): Guarde la pcb de la patota 1 en las pagina 4 y su desplazamiento es 30
+[INFO] 00:29:20:835 Mi-RAM/(6313:6363): Envio ok
+[INFO] 00:29:20:835 Mi-RAM/(6313:6363): Iniciando tripulante 1 de la patota 1 en la posicion 0|0
+[INFO] 00:29:20:835 Mi-RAM/(6313:6363): Guarde al tripulante 1 en la pagina 5 y su desplazamiento es 6
+[INFO] 00:29:20:835 Mi-RAM/(6313:6363): Guarde la tcb de 1 en memoria
+[INFO] 00:33:19:312 Mi-RAM/(6627:6627): RAM: 8192
+[INFO] 00:33:19:317 Mi-RAM/(6627:6627): SWAP: 16384
+[INFO] 00:33:19:317 Mi-RAM/(6627:6627): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 00:33:19:317 Mi-RAM/(6627:6627): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 00:33:19:317 Mi-RAM/(6627:6627): <> SERVIDOR LISTO....
+[INFO] 00:33:59:134 Mi-RAM/(6670:6670): RAM: 8192
+[INFO] 00:33:59:136 Mi-RAM/(6670:6670): SWAP: 16384
+[INFO] 00:33:59:136 Mi-RAM/(6670:6670): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 00:33:59:136 Mi-RAM/(6670:6670): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 00:33:59:136 Mi-RAM/(6670:6670): <> SERVIDOR LISTO....
+[INFO] 00:34:24:719 Mi-RAM/(6712:6712): RAM: 8192
+[INFO] 00:34:24:720 Mi-RAM/(6712:6712): SWAP: 16384
+[INFO] 00:34:24:720 Mi-RAM/(6712:6712): Tengo 256 marcos de 32 bytes en memoria principal
+[INFO] 00:34:24:720 Mi-RAM/(6712:6712): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 00:34:24:720 Mi-RAM/(6712:6712): <> SERVIDOR LISTO....

@@ -136,7 +136,6 @@ void* atender_tripulante(Tripulante* trip)
 					actualizarUbicacion(trip->conexion);
 					break;
 				case INICIAR_PATOTAS:
-
 					iniciarPatota(trip->conexion);
                     //iniciarPatota(recibir_patota(trip->conexion));
 					break;
