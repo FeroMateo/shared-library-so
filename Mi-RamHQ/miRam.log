@@ -1,0 +1,47 @@
+[INFO] 21:39:31:601 Mi-RAM/(11586:11586): RAM: 0
+[INFO] 21:39:31:601 Mi-RAM/(11586:11586): SWAP: 16384
+[INFO] 21:39:31:601 Mi-RAM/(11586:11586): Tengo 0 marcos de 32 bytes en memoria principal
+[INFO] 21:39:31:601 Mi-RAM/(11586:11586): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 21:42:34:265 Mi-RAM/(11744:11744): RAM: 0
+[INFO] 21:42:34:265 Mi-RAM/(11744:11744): SWAP: 16384
+[INFO] 21:42:34:265 Mi-RAM/(11744:11744): Tengo 0 marcos de 32 bytes en memoria principal
+[INFO] 21:42:34:265 Mi-RAM/(11744:11744): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 21:43:59:043 Mi-RAM/(11867:11867): RAM: 0
+[INFO] 21:43:59:043 Mi-RAM/(11867:11867): SWAP: 16384
+[INFO] 21:43:59:043 Mi-RAM/(11867:11867): Tengo 0 marcos de 32 bytes en memoria principal
+[INFO] 21:43:59:043 Mi-RAM/(11867:11867): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 22:41:17:629 Mi-RAM/(12639:12639): RAM: 0
+[INFO] 22:41:17:629 Mi-RAM/(12639:12639): SWAP: 16384
+[INFO] 22:41:17:629 Mi-RAM/(12639:12639): Tengo 0 marcos de 32 bytes en memoria principal
+[INFO] 22:41:17:629 Mi-RAM/(12639:12639): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 22:41:22:348 Mi-RAM/(12639:12639): <> SERVIDOR LISTO....
+[INFO] 22:41:55:273 Mi-RAM/(12639:12664): <>START: Recibir patota
+[INFO] 22:41:55:273 Mi-RAM/(12639:12664): <>END: Recibir patota
+[INFO] 22:48:36:973 Mi-RAM/(12962:12962): RAM: 0
+[INFO] 22:48:36:973 Mi-RAM/(12962:12962): SWAP: 16384
+[INFO] 22:48:36:973 Mi-RAM/(12962:12962): Tengo 0 marcos de 32 bytes en memoria principal
+[INFO] 22:48:36:973 Mi-RAM/(12962:12962): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 22:48:36:973 Mi-RAM/(12962:12962): <> SERVIDOR LISTO....
+[INFO] 22:49:17:015 Mi-RAM/(12962:13022): <>START: Recibir patota
+[INFO] 22:49:17:015 Mi-RAM/(12962:13022): <>END: Recibir patota
+[INFO] 22:49:50:702 Mi-RAM/(12962:13022): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 22:51:35:413 Mi-RAM/(13100:13100): RAM: 0
+[INFO] 22:51:35:806 Mi-RAM/(13100:13100): SWAP: 16384
+[INFO] 22:51:35:821 Mi-RAM/(13100:13100): Tengo 0 marcos de 32 bytes en memoria principal
+[INFO] 22:51:35:837 Mi-RAM/(13100:13100): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 22:51:35:874 Mi-RAM/(13100:13100): <> SERVIDOR LISTO....
+[INFO] 22:51:53:506 Mi-RAM/(13100:13109): <>START: Recibir patota
+[INFO] 22:51:53:556 Mi-RAM/(13100:13109): <>END: Recibir patota
+[INFO] 22:51:53:612 Mi-RAM/(13100:13109): Iniciando patota 1 con 1 tripulantes que pesa 187...
+O] 22:51:53:612 Mi-RAM/(13100:13109): Iniciando patota 1 con 1 tripulantes que pesa 187...
+[INFO] 22:56:24:730 Mi-RAM/(13237:13237): RAM: 0
+[INFO] 22:56:25:313 Mi-RAM/(13237:13237): SWAP: 16384
+[INFO] 22:56:25:325 Mi-RAM/(13237:13237): Tengo 0 marcos de 32 bytes en memoria principal
+[INFO] 22:56:25:346 Mi-RAM/(13237:13237): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 22:56:25:415 Mi-RAM/(13237:13237): <> SERVIDOR LISTO....
+[INFO] 22:57:10:450 Mi-RAM/(13237:13253): <>START: Recibir patota
+[INFO] 22:59:19:106 Mi-RAM/(13315:13315): RAM: 0
+[INFO] 22:59:19:127 Mi-RAM/(13315:13315): SWAP: 16384
+[INFO] 22:59:19:127 Mi-RAM/(13315:13315): Tengo 0 marcos de 32 bytes en memoria principal
+[INFO] 22:59:19:127 Mi-RAM/(13315:13315): Tengo 512 marcos de 32 bytes en memoria virtual
+[INFO] 22:59:19:130 Mi-RAM/(13315:13315): <> SERVIDOR LISTO....

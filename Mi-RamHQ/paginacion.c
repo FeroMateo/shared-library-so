@@ -498,10 +498,11 @@ void agregarPaginasALista(t_list* lista, t_list* paginas){
 	list_add_all(lista, paginas);
 }
 
-char* buscarTareaPaginacion(int idPatota, int proxInst, int* esUltima){
+char* buscarTareaPaginacion(int idPatota, int proxInst){
 
     char* tareas = buscarTareasPaginacion(idPatota);
-	char* tarea = separarTareas(tareas, proxInst, esUltima); //ME DEVUELVE LA TAREA Y DICE SI ES LA ULTIMA
+
+	char* tarea = separarTareas(tareas, proxInst); //ME DEVUELVE LA TAREA Y DICE SI ES LA ULTIMA
 
 	return tarea;
 }

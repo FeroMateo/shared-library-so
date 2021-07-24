@@ -88,9 +88,7 @@ void showbitarr(t_bitarray*);
 void eliminarLista(t_list* lista);
 void eliminarAlgo(void* algo);
 char* dameNombre();
-
-
-char* separarTareas(char* tareas, int desplazamiento, int* esUltima);
+char* separarTareas(char* tareas, int desplazamiento);
 
 
 void mostrarTcb(t_tcb* unaTcb);

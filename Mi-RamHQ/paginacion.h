@@ -134,7 +134,7 @@ void guardarMemoriaVirtual(t_pagina* pagina);
 t_list* buscarPaginas(int nPrimerPagina, int size, t_tabla_pagina* unaTabla, int relleno);
 
 void agregarPaginasALista(t_list* lista, t_list* paginas);
-char* buscarTareaPaginacion(int idPatota, int proxInst, int* esUltima);
+char* buscarTareaPaginacion(int idPatota, int proxInst);
 
 char* buscarTareasPaginacion(int idPatota);
 

@@ -11,10 +11,10 @@ int main(void){
 
 	cargar_configuracion();
 
-	logger = log_create("../miRam.log", "Mi-RAM", 0, LOG_LEVEL_DEBUG);
+	logger = log_create("miRam.log", "Mi-RAM",1, LOG_LEVEL_DEBUG);
 
-	signal(SIGUSR1, &signalCompactacion);
-	signal(SIGUSR2, &signalDump);
+	//signal(SIGUSR1, &signalCompactacion);
+	//signal(SIGUSR2, &signalDump);
 
 	int feedback = iniciarMemoria();
 
@@ -113,7 +113,7 @@ void prender_server()
 
 	int puerto_escucha = PUERTO_MIRAM;
 	SOCKET_MIRAM = crearSocket();
-	log_info(miRam_logger,"<> SERVIDOR LISTO....");
+	log_info(logger,"<> SERVIDOR LISTO....");
 	asignar_escuchas(SOCKET_MIRAM,puerto_escucha,atender_tripulante);
 
 	// SE ESCUCHA AL MISMO TIEMPO VARIOS CLIENTES, PARA PODER RECIBIR
@@ -130,11 +130,10 @@ void* atender_tripulante(Tripulante* trip)
 			switch(cod_op)
 			{
 				case ENVIAR_PROXIMA_TAREA:
-
-					//actualizarIdTareaARealizar(trip);
+					enviarOperacion(trip->conexion);
 					break;
 				case POSICION_TRIPULANTE_ACTUALIZADA:
-					//actualizar_posicion_tripulante(trip);
+					actualizarUbicacion(trip->conexion);
 					break;
 				case INICIAR_PATOTAS:
 
@@ -185,7 +184,7 @@ case INICIAR_PATOTA:
 
 void cargar_configuracion(void)
 {
-	miRam_config = config_create("../mi-ram.config"); //Leo el archivo de configuracion
+	miRam_config = config_create("../miRam.config"); //Leo el archivo de configuracion
 
 	if (miRam_config == NULL) {
 		perror("Archivo de configuracion de MI-RAM no encontrado");
@@ -194,9 +193,9 @@ void cargar_configuracion(void)
 
 
 
-	PUERTO_MIRAM =  config_get_string_value(miRam_config,"PUERTO");
+	PUERTO_MIRAM =  config_get_int_value(miRam_config,"PUERTO");
 	IP_MIRAM = config_get_string_value(miRam_config,"IP");
-	TAM_MEM = config_get_string_value(miRam_config, "ESQUEMA_MEMORIA");
+	TAM_MEM = config_get_int_value(miRam_config,"TAMANIO_MEMORIA");
 	ESQUEMA_MEM =config_get_string_value(miRam_config, "ESQUEMA_MEMORIA");
 	TAM_PAG = config_get_int_value(miRam_config,"TAMANIO_PAGINA");
 	TAM_SWAP =config_get_int_value(miRam_config, "TAMANIO_SWAP");

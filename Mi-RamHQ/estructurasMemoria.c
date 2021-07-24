@@ -200,29 +200,24 @@ char* dameNombre(){
 
 //MODIFICAR
 
-char* separarTareas(char* tareas, int desplazamiento, int* esUltima){
+char* separarTareas(char* tareas, int desplazamiento){
 
 	char** tareasSeparadas = string_split(tareas,",");
 
-	if(tareasSeparadas[desplazamiento] != NULL)
-	{
-		if(tareasSeparadas[desplazamiento + 1] == NULL)*esUltima = 1;//Si la sig es NULL es la ultima
-		else *esUltima=0;//Si no es NULL, no es la ultima xD
+	//tarea1 43;0;0;5,tarea2;0;0;6,...
 
-		char* tarea = malloc(strlen(tareasSeparadas[desplazamiento])+1);
-		strcpy(tarea, tareasSeparadas[desplazamiento]);
-		free(tareas);
-		//liberarStringArray(tareasSeparadas);
-		return tarea;
-
-	}
-	else
+	if(tareasSeparadas[desplazamiento]!=NULL)
 	{
-		free(tareas);
-		//liberarStringArray(tareasSeparadas);
+		char* tareaEnvio = malloc(strlen(tareasSeparadas[desplazamiento])+1);
+		strcpy(tareaEnvio,tareasSeparadas[desplazamiento]);
+		return tareaEnvio;
+		//liberarArray
+
+	}else
+	{
+		//liberarArray()
 		return NULL;
 	}
-
 }
 
 
